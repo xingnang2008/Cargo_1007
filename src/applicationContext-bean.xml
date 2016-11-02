@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans.xsd
+           http://www.springframework.org/schema/context
+           http://www.springframework.org/schema/context/spring-context-3.0.xsd
+           http://www.springframework.org/schema/aop
+           http://www.springframework.org/schema/aop/spring-aop-3.0.xsd
+           http://www.springframework.org/schema/tx
+     	   http://www.springframework.org/schema/tx/spring-tx-3.0.xsd">         
+
+
+<context:annotation-config />
+<context:component-scan base-package="com.cargo.." />
+
+<bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+	<property name="locations">
+		<value>classpath:jdbc.properties</value>
+	</property>
+
+</bean>
+
+<bean id="dataSource" destroy-method="close"
+	class="org.apache.commons.dbcp.BasicDataSource">
+	<property name="driverClassName" value="${jdbc.driverClassName}" />
+	<property name="url" value="${jdbc.url}" />
+	<property name="username" value="${jdbc.username}" />
+	<property name="password" value="${jdbc.password}" />
+	</bean>
+
+
+<bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+	<property name="dataSource" ref="dataSource" />
+	<property name="packagesToScan">
+      <list>
+        <value>com.cargo.model</value>
+       
+      </list>
+    </property>
+    <property name="hibernateProperties">
+      <value>
+                <!-- 设置数据库方言 -->
+                hibernate.dialect=org.hibernate.dialect.MySQLDialect
+                <!-- 设置自动创建|更新|验证数据库表结构 -->
+                hibernate.hbm2ddl.auto=update
+                <!-- 是否在控制台显示sql -->
+                hibernate.show_sql=false
+                <!-- 是否格式化sql，优化显示 -->
+                hibernate.format_sql=true
+                <!-- 是否开启二级缓存 -->
+                hibernate.cache.use_second_level_cache=false
+                <!-- 是否开启查询缓存 -->
+                hibernate.cache.use_query_cache=false
+                <!-- 数据库批量查询最大数
+                hibernate.jdbc.fetch_size=50 -->
+                <!-- 数据库批量更新、添加、删除操作最大数
+                hibernate.jdbc.batch_size=50 -->
+                <!-- 是否自动提交事务 -->
+                hibernate.connection.autocommit=true
+                <!-- 指定hibernate在何时释放JDBC连接 -->
+                hibernate.connection.release_mode=auto
+                <!-- 创建session方式 hibernate4.x 的方式 -->
+                hibernate.current_session_context_class=org.springframework.orm.hibernate4.SpringSessionContext
+                <!-- javax.persistence.validation.mode默认情况下是auto的，就是说如果不设置的话它是会自动去你的classpath下面找一个bean-validation**包 
+                    所以把它设置为none即可 -->
+                javax.persistence.validation.mode=none 
+                <!-- 将Session绑定到线程thread
+                current_session_context_class=thread   
+                 -->           
+            </value>
+    </property>
+</bean>
+
+<!-- 手动配上切面的事务，才会触发sessionFactory ，DAO中的getCurrectSession()才可以使用。否则提示no session -->
+<tx:annotation-driven transaction-manager="txManager"/>
+
+ <bean id="txManager" class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+  <property name="sessionFactory" ref="sessionFactory" />
+</bean>
+<aop:config>
+		<aop:pointcut id="bussinessService"
+			expression="execution(public * com.cargo.service.*.*(..))" />
+		<aop:advisor pointcut-ref="bussinessService"
+			advice-ref="txAdvice" />
+	</aop:config>
+
+	<tx:advice id="txAdvice" transaction-manager="txManager">
+		<tx:attributes>
+		
+			<tx:method name="isExists" read-only="true" />
+			<tx:method name="find*" read-only="true" />
+			<tx:method name="save*" propagation="REQUIRED"/>
+			<tx:method name="delete*" propagation="REQUIRED"/>
+			<tx:method name="update*" propagation="REQUIRED"/>
+			<tx:method name="list*" read-only="true"/>
+			<tx:method name="*" read-only="true"/>
+			<!-- 注意 ：为防止Service里的方法名不对应这里的规则出现没有Session的错误，配一个*的method-->
+		</tx:attributes>
+	</tx:advice>
+</beans>

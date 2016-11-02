@@ -1,0 +1,41 @@
+<beans:beans xmlns="http://www.springframework.org/schema/security"
+	xmlns:beans="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+           http://www.springframework.org/schema/security
+           http://www.springframework.org/schema/security/spring-security.xsd">
+
+	<!--启用方法控制访问权限，用于直接拦截接口上的方法，拥有权限才能访问此方法 -->
+	<global-method-security jsr250-annotations="enabled" />
+	<!--自己定的登陆页面，并且登陆页面不拦截止 -->
+	<http pattern="/login.jsp" security="none" />
+	<http pattern="/resources" security="none" />
+	<!--配置拦截页面 -->
+	<http auto-config="true" use-expressions="true">
+		<intercept-url pattern="/**" access="hasRole('ROLE_USER')" />
+
+		
+		<!-- 配置登录页面  -->
+		<form-login login-page="/login.jsp" login-processing-url="/j_spring_security_check"
+			authentication-failure-url="/login.jsp?error=true"
+			default-target-url="/index.jsp" always-use-default-target="true" />
+		<!-- 用户退出的跳转页面 -->
+		<!--
+			<logout invalidate-session="true"
+			logout-url="/j_spring_security_logout"
+			logout-success-url="/login.jsp"/>
+		-->
+		<logout invalidate-session="true" logout-url="/j_spring_security_logout"/>
+	</http>
+
+
+	<authentication-manager>
+		<authentication-provider user-service-ref='myUserDetailsService' />
+	</authentication-manager>
+
+	<beans:bean id="myUserDetailsService"
+		class="com.cargo.service.CustomerUserDetailsService">
+	</beans:bean>
+
+
+</beans:beans> 
