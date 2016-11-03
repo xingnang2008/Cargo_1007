@@ -8,7 +8,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import com.cargo.dao.RoleDao;
 import com.cargo.dao.UserDao;
 import com.cargo.model.User;
-import com.cargo.secrity.UserDetailsAdapter;
+import com.cargo.security.UserDetailsAdapter;
 
 @SuppressWarnings("restriction")
 public class CustomerUserDetailsService implements UserDetailsService {

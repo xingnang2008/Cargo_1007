@@ -1,4 +1,4 @@
-package com.cargo.secrity;
+package com.cargo.security;
 
 import java.util.Collection;
 import java.util.HashSet;
