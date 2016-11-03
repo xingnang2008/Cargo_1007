@@ -112,9 +112,7 @@
 				</div>
 				<div title="退出">
 				<ul>
-					<li><a href="#" title="/j_spring_security_logout">退出</a></li>
-					
-					<li></li>
+					<li><a href="<%=basePath%>j_spring_security_logout">退出</a></li>
 				</ul>
 				</div>
 		</div></div>   
