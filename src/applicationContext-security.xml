@@ -14,24 +14,28 @@
 	<http auto-config="true" use-expressions="true">
 		<intercept-url pattern="/index.jsp" access="hasRole('ROLE_USER')" />
 		<intercept-url pattern="/admin/**" access="hasRole('ROLE_ADMIN')" />
-		
+
 		<!-- 配置登录页面  -->
 		<form-login login-page="/login.jsp" login-processing-url="/j_spring_security_check"
 			authentication-failure-url="/login.jsp?error=true"
 			default-target-url="/index.jsp" always-use-default-target="true" />
 		<!-- 用户退出的跳转页面 -->
-	
-		<logout invalidate-session="true" logout-url="/j_spring_security_logout"/>
+
+		<logout invalidate-session="true" logout-url="/j_spring_security_logout" />
 	</http>
 
 
-	<authentication-manager>
-		<authentication-provider user-service-ref='myUserDetailsService' />
+	<authentication-manager alias="authenticationManager">
+		<authentication-provider user-service-ref="myUserDetailsService">
+			<password-encoder hash="md5" >  
+                <salt-source user-property="username" />  
+                </password-encoder>
+		</authentication-provider>
 	</authentication-manager>
 
 	<beans:bean id="myUserDetailsService"
 		class="com.cargo.service.CustomerUserDetailsService">
 	</beans:bean>
-
-
+		
+	
 </beans:beans> 

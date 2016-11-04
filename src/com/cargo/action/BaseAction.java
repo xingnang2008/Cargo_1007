@@ -14,7 +14,7 @@ import org.apache.struts2.interceptor.RequestAware;
 import org.apache.struts2.interceptor.SessionAware;
 import org.springframework.stereotype.Component;
 
-
+import com.cargo.service.RoleService;
 import com.cargo.service.UserService;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
@@ -44,15 +44,15 @@ public abstract class BaseAction<T> extends ActionSupport implements Application
 	protected Date enddate;
 
 	protected File excelFile;
-	protected String excelFileFileName;  //这个名字必须是 File  这个的名字+FileName（即excelFile+FileName)
-	protected InputStream downloadFile;	//下载用的
+	protected String excelFileFileName;  
+	protected InputStream downloadFile;	
 	//service 
 	
 
 	@Resource
 	protected UserService userService;
-	
-	
+	@Resource
+	protected RoleService roleService;
 	
 	
 	public BaseAction(){

@@ -103,9 +103,9 @@
 				</ul>
 				</div>
 				
-				<div title="财务管理">
+				<div title="用户管理">
 				<ul>
-					<li><a href="#" title="CashContent.jsp">款项记录</a></li>
+					<li><a href="#" title="admin/User/User_list.jsp">用户管理</a></li>
 					
 					<li></li>
 				</ul>

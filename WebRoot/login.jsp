@@ -22,19 +22,25 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			src="<%=basePath%>script/jquery-easyui-1.4.3/jquery.easyui.min.js"></script>
 		<script type="text/javascript"
 			src="<%=basePath%>script/jquery-easyui-1.4.3/locale/easyui-lang-zh_CN.js"></script>
-	
+		<script type="text/javascript"
+			src="<%=basePath%>script/md5/md5-min.js"></script>
+			
 	</head>
 	<body onload='document.loginForm.j_username.focus();'>
 		<div id='container'>
+		<div>
 		<center>
 			<h1>
 				<font color="#fff">中&nbsp;集&nbsp;信&nbsp;达&nbsp;国&nbsp;际&nbsp;物&nbsp;流</font>
 			</h1>
 		</center>
+		</div>
+		<div>
 		<c:if test="${not empty param.login_error}">
 			<font color="red">登录失败，请重试.<br/><br/>原因:<c:out value="${SPRING_SECURITY_LAST_EXCEPTION.message}"/></font>
 		
 		</c:if>
+		</div>
 		<div id="login-box" class="easyui-panel" title="Login"     
         style="width:300px;height:200px;padding:10px;background:#fafafa;"   
         data-options="iconCls:'icon-add',closable:false,    

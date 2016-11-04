@@ -1,9 +1,11 @@
 package com.cargo.service;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Resource;
 
+import org.springframework.security.authentication.encoding.Md5PasswordEncoder;
 import org.springframework.stereotype.Component;
 
 import com.cargo.dao.UserDao;
@@ -20,6 +22,7 @@ public class UserService {
 	}
 
 	public void save(User user){
+		
 		this.userDao.save(user);
 	}
 	public void deleteByIds(String ids) {
@@ -33,6 +36,9 @@ public class UserService {
 	}
 	public List<User> findAll(){
 		return this.userDao.findAll();
+	}
+	public Map find(String name,String username){
+		return userDao.find(name, username);
 		
 	}
 }

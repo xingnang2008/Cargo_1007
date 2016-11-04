@@ -59,5 +59,5 @@ public class UserDetailsAdapter implements UserDetails {
 		// TODO Auto-generated method stub
 		return user.isEnabled();
 	}
-
+	
 }
