@@ -1,6 +1,7 @@
 package com.cargo.service;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Resource;
 
@@ -34,5 +35,11 @@ public class RoleService {
 	public List<Role> findAll(){
 		return this.roleDao.findAll();
 		
+	}
+	public Map find(){	
+		return roleDao.find();
+	}
+	public Role findById(Integer id){
+		return roleDao.findById(id);
 	}
 }

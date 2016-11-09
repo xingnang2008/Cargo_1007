@@ -1,6 +1,8 @@
 package com.cargo.dao;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.hibernate.Query;
 import org.springframework.stereotype.Component;
@@ -57,6 +59,15 @@ public class RoleDao extends BaseDao {
 		} catch (RuntimeException re) {
 			throw re;
 		}
+	}
+	public Map find(){		
+		Map<String,Object> pageMap = new HashMap<String,Object>();		
+		List<Role> list = findAll();
+		
+		pageMap.put("rows",list);
+		pageMap.put("total",list.size());	
+
+		return pageMap;
 	}
 	public Role findByRoleName(String Rolename) {
 		try {

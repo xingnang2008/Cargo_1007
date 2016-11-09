@@ -62,6 +62,13 @@
 			<artifactId>spring-security-config</artifactId>
 			<version>3.2.9.RELEASE</version>
 		</dependency>
+		<!--spring-security-taglibs	-->
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-taglibs</artifactId>
+			<version>3.2.9.RELEASE</version>
+		</dependency>
+
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-orm</artifactId>
@@ -92,7 +99,7 @@
 			<artifactId>ezmorph</artifactId>
 			<version>1.0.6</version>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>org.apache.commons</groupId>
 			<artifactId>commons-jci-core</artifactId>

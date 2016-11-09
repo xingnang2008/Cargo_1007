@@ -96,6 +96,7 @@
 			<tx:method name="save*" propagation="REQUIRED"/>
 			<tx:method name="delete*" propagation="REQUIRED"/>
 			<tx:method name="update*" propagation="REQUIRED"/>
+			<tx:method name="refresh*" propagation="REQUIRED"/>
 			<tx:method name="list*" read-only="true"/>
 			<tx:method name="*" read-only="true"/>
 			<!-- 注意 ：为防止Service里的方法名不对应这里的规则出现没有Session的错误，配一个*的method-->

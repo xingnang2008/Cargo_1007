@@ -1,4 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %> 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
   <head>
@@ -60,7 +61,9 @@
   
   
    <body class="easyui-layout">   
-        
+    <div data-options="region:'north',title:'用户信息'" style="padding:1px;background:#eee;"> 
+    	<H3 align="center">用&nbsp;&nbsp;户：&nbsp;&nbsp; <sec:authentication property="name"/> </H3>
+    </div>   
     <div data-options="region:'west',title:'菜单',split:true" style="width:200px;">
     <div id="menu" class="easyui-accordion" data-options="fit:true">   <!--适应最外层-->
     			<div title="运单管理">
@@ -105,7 +108,12 @@
 				
 				<div title="用户管理">
 				<ul>
-					<li><a href="#" title="admin/User/User_list.jsp">用户管理</a></li>
+					
+					<li><a href="#" title="jsp/User_updateInput.jsp">用户</a></li>
+					<li><a href="#" title="security/User/User_list.jsp">用户管理</a></li>
+					<sec:authorize access="hasRole('ROLE_ADMIN')">
+					<li><a href="#" title="Waybill/Waybill_accountInput.jsp">运单结算</a></li>
+					</sec:authorize>
 					
 					<li></li>
 				</ul>
@@ -118,7 +126,7 @@
 		</div></div>   
     <div data-options="region:'center',title:'工作区'" style="padding:5px;background:#eee;">
 	    <div id="tt" class="easyui-tabs" data-options="fit:true">
-	    	 
+	    	
 	    </div>
     </div>   
 </body>  

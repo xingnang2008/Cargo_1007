@@ -1,6 +1,10 @@
 package com.cargo.service;
 
 import javax.annotation.Resource;
+
+import org.springframework.security.access.AccessDeniedException;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -46,5 +50,5 @@ public class CustomerUserDetailsService implements UserDetailsService {
 		UserDetailsAdapter userAdp = new UserDetailsAdapter(user);
 		return userAdp;
 	}
-
+	 
 }

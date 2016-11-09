@@ -7,7 +7,6 @@ import java.util.Map;
 import org.hibernate.Criteria;
 import org.hibernate.Query;
 import org.hibernate.criterion.Projections;
-import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Component;
 import com.cargo.model.User;
 @Component
@@ -72,22 +71,12 @@ public class UserDao extends BaseDao {
 			throw re;
 		}
 	}
-	public Map find(String name,String username){
-		
+	public Map find(){		
 		Map<String,Object> pageMap = new HashMap<String,Object>();		
-		Criteria crit = getSession().createCriteria(User.class);
-		if(name!=null)  {
-		crit.add(Restrictions.like("name", "%"+name+"%"));
-		}
-		if(username!=null)  {
-			crit.add(Restrictions.eq("username", username));
-		}		
-		Long rowCount = (Long) crit.setProjection(Projections.rowCount()).uniqueResult();  //执行查询记录行数
-		crit.setProjection(null);
+		List<User> list = findAll();
 		
-		List<User> comps = (List<User>)crit.list();
-		pageMap.put("rows",comps);
-		pageMap.put("total",rowCount);	
+		pageMap.put("rows",list);
+		pageMap.put("total",list.size());	
 
 		return pageMap;
 	}

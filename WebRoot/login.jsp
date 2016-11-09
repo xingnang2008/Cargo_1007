@@ -3,10 +3,12 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
 
-<%
-String path = request.getContextPath();
-String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
-%>
+	<%
+		String path = request.getContextPath();
+		String basePath = request.getScheme() + "://"
+				+ request.getServerName() + ":" + request.getServerPort()
+				+ path + "/";
+	%>
 
 	<head>
 		<meta charset="utf-8">
@@ -24,59 +26,68 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			src="<%=basePath%>script/jquery-easyui-1.4.3/locale/easyui-lang-zh_CN.js"></script>
 		<script type="text/javascript"
 			src="<%=basePath%>script/md5/md5-min.js"></script>
-			
+
 	</head>
 	<body onload='document.loginForm.j_username.focus();'>
 		<div id='container'>
-		<div>
-		<center>
-			<h1>
-				<font color="#fff">中&nbsp;集&nbsp;信&nbsp;达&nbsp;国&nbsp;际&nbsp;物&nbsp;流</font>
-			</h1>
-		</center>
-		</div>
-		<div>
-		<c:if test="${not empty param.login_error}">
-			<font color="red">登录失败，请重试.<br/><br/>原因:<c:out value="${SPRING_SECURITY_LAST_EXCEPTION.message}"/></font>
-		
-		</c:if>
-		</div>
-		<div id="login-box" class="easyui-panel" title="Login"     
-        style="width:300px;height:200px;padding:10px;background:#fafafa;"   
-        data-options="iconCls:'icon-add',closable:false,    
-                collapsible:false,minimizable:false,maximizable:false">   
-		
-			<form name='loginForm'
-				action="<c:url value='j_spring_security_check' />" method='POST'>
-				<table>
-					<tr>
-						<td>
-							用&nbsp;&nbsp;户:
-						</td>
-						<td>
-							<input class="easyui-textbox" style="width:150px;height:30px" type='text' name='j_username' value=''>
-						</td>
-					</tr>
-					<tr>
-						<td>
-							密&nbsp;&nbsp;码:
-						</td>
-						<td>
-							<input class="easyui-textbox" style="width:150px;height:30px" type='password' name='j_password' />
-						</td>
-					</tr>
-					<tr height="20"></tr>
-					<tr>
-						<td >
-						</td>
-						<td>
-							<input name="submit" type="submit" style="width:80px;height:30px" value="登&nbsp;&nbsp;陆" />
-						</td>
-					</tr>
-				</table>
+			<div id='title'> </div>
+			<div id='mid'>
+				<div id='left-kuang'>
+				</div>
+				<div id='right-kuang'>
+					<div>
+						<c:if test="${not empty param.login_error}">
+							<font color="red">登录失败，请重试.<br />
+								<br />原因:<c:out
+									value="${SPRING_SECURITY_LAST_EXCEPTION.message}" />
+							</font>
 
-			</form>
-		</div>
+						</c:if>
+					</div>
+					<div id="login-box" >
+
+						<form name='loginForm'
+							action="<c:url value='j_spring_security_check' />" method='POST'>
+							<table>
+								<tr>
+									<td>
+										<FONT color='#fff'>&nbsp;用&nbsp;户:</FONT>
+									</td>
+									<td>
+										<input class="easyui-textbox"
+											style="width: 150px; height: 30px" type='text'
+											name='j_username' value=''>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<FONT color='#fff'>&nbsp;密&nbsp;码:</FONT>
+									</td>
+									<td>
+										<input class="easyui-textbox"
+											style="width: 150px; height: 30px" type='password'
+											name='j_password' />
+									</td>
+								</tr>
+								<tr height="20"></tr>
+								<tr>
+									<td>
+									</td>
+									<td>
+										<input name="submit" type="submit" class="easyui-linkbutton"
+											style="width: 150px; height: 30px" value="登&nbsp;&nbsp;陆" />
+									</td>
+								</tr>
+							</table>
+
+						</form>
+					</div>
+				</div>
+
+
+			</div>
+
+
 		</div>
 	</body>
 </html>

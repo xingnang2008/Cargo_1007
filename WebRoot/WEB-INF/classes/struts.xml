@@ -10,22 +10,19 @@
        
          <action name="*_*" class="com.cargo.action.{1}Action" method="{2}">          
     		<!-- 注意下面的顺序，先name="jsonMap" 而后才是type -->		
-    		
-    		
     		<result>/admin/{1}_{2}.jsp</result>
-    		
          </action>
-         
-        
     </package>
    
-    <package name="user" namespace="/admin/User" extends="json-default">
+    <package name="user" namespace="/security/User" extends="json-default">
     	 <action name="User-*" class="com.cargo.action.UserAction" method="{1}">          
     	    	
-    		<result>/admin/success.jsp</result>
-    		<result>/admin/User/User{1}.jsp</result>
-    		<result name="input">/admin/User/User{1}.jsp</result>
-    		<result name="ERROR">/admin/error.jsp</result>
+    		<result>/security/success.jsp</result>    		
+    		<result name="input">/security/User/User{1}.jsp</result>
+    		<result name="ERROR">/security/error.jsp</result>
+    		<result name="jsonList" type="json">
+    			<param name="root">jsonList</param>    			
+    		</result>
     		<result name="jsonMap" type="json" >      
     			<param name="root">pageMap</param>
     		</result>
@@ -40,5 +37,27 @@
     		</result>   
          </action>
     </package>
-   
+       <package name="role" namespace="/security/Role" extends="json-default">
+    	 <action name="Role-*" class="com.cargo.action.RoleAction" method="{1}">          
+    	    	
+    		<result>/security/success.jsp</result>    		
+    		<result name="input">/security/Role/Role{1}.jsp</result>
+    		<result name="ERROR">/security/error.jsp</result>
+    		<result name="jsonList" type="json">
+    			<param name="root">jsonList</param>    			
+    		</result>
+    		<result name="jsonMap" type="json" >      
+    			<param name="root">pageMap</param>
+    		</result>
+    		<result name="stream" type="stream">
+    			<param name="inputName">inputStream</param>
+    		</result>
+    		<result name="download" type="stream">
+    			<param name="contentType">application/vnd.ms-excel</param>
+    			<param name="contentDisposition">filename="${fileName}"</param>
+    			<param name="inputName">downRebateReport</param>
+    			<param name="buffeSize">4096</param>    			
+    		</result>   
+         </action>
+    </package>
 </struts>

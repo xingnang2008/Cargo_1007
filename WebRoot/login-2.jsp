@@ -1,92 +1,59 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
-<%
-	String path = request.getContextPath();
-	String basePath = request.getScheme() + "://"
-			+ request.getServerName() + ":" + request.getServerPort()
-			+ path + "/";
-%>
-<html>
-	<head>
-		<meta charset="utf-8">
 
-		<style type="text/css">
-#container {
-	margin: 0 auto;
-	padding: 10px;
-}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head>
+<title>登录</title> 
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 
-.hang {
-	height: 40px;
-}
-
-.label {
-	width: 60px;
-	float: left;
-}
-
-.xiang {
-	width: 180px;
-	float: left;
-}
-
-.xiangb {
-	width: 100px;
-	float: left;
-}
-</style>
-	</head>
-	<body
-		style="background-image:url(<%=basePath%>/resources/image/backgroud.jpg);
-			background-position: center;
-			background-repeat: no-repeat;
-			background-attachment: fixed">
-		<div id='container'>
-
-			<form action="j_spring_security_check" method="POST">
-
-				<div id='logaria'>
-
-					<div class='hang'>
-						<p>
-							<span><H2>
-									用户登陆
-								</H2>
-							</span>
-						</p>
-					</div>
-					<div class='hang'>
-						<div class='label'>
-							用户名：
-						</div>
-						<div class='xiang'>
-							<input type='text' name='j_username' style="height: 30px">
-						</div>
-					</div>
-					<div class='hang'>
-						<div class='label'>
-							密码:
-						</div>
-						<div class='xiang'>
-							<input type='password' name='j_password' style="height: 30px">
-						</div>
-					</div>
-					<div class='hang'>
-						<div class='xiangb'></div>
-						<div class='xiangb'>
-							<input type="submit" value=' 登陆 ' style="height: 40px">
-						</div>
-						<div class='xiangb'>
-							<input type="reset" value=' 重填 ' style="height: 40px">
-						</div>
-					</div>
-				</div>
+<script type="text/javascript" src="js/login.js"></script>
+<link href="css/login01.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
 
 
+<div class="login" style="margin-top:50px;">
+    
+  
+  
+    
+    <div class="web_qr_login" id="web_qr_login" style="display: block; height: 235px;">    
 
-			</form>
-		</div>
+            <!--登录-->
+            <div class="web_login" id="web_login">
+               
+               
+               <div class="login-box">
+    
+            
+			<div class="login_form">
+				<form action="" name="loginform" accept-charset="utf-8" id="login_form" class="loginForm" action="<c:url value='j_spring_security_check' />" method='post'>
+                <div class="uinArea" id="uinArea">
+                <label class="input-tips" for="u">帐号：</label>
+                <div class="inputOuter" id="uArea">
+                    
+                    <input type="text" id="u" name="username" class="inputstyle"/>
+                </div>
+                </div>
+                <div class="pwdArea" id="pwdArea">
+               <label class="input-tips" for="p">密码：</label> 
+               <div class="inputOuter" id="pArea">
+                    
+                    <input type="password" id="p" name="p" class="inputstyle"/>
+                </div>
+                </div>
+               
+                <div style="padding-left:50px;margin-top:20px;"><input type="submit" value="登 录" style="width:150px;" class="button_blue"/></div>
+              </form>
+           </div>
+           
+            	</div>
+               
+            </div>
+            <!--登录end-->
+  </div>
 
+ 
+</div>
 
-	</body>
+</body>
 </html>
