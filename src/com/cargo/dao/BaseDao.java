@@ -1,32 +1,21 @@
 package com.cargo.dao;
 
-import javax.annotation.Resource;
+import java.util.List;
 
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
+import com.cargo.model.Role;
 
-public class BaseDao {
-	@Resource
-	private SessionFactory sessionFactory;
+public interface BaseDao<T> {
 	
-	protected Session getSession(){
-		Session s = sessionFactory.getCurrentSession();
-		if(s==null){
-			s = getNewSession();
-		}
-		return s;
-	}
-	private Session getNewSession(){
-		
-		Session s = sessionFactory.openSession();
-		return s;
-	}
-	public SessionFactory getSessionFactory() {
-		return sessionFactory;
-	}	
-	public void setSessionFactory(SessionFactory sessionFactory) {
-		this.sessionFactory = sessionFactory;
-	}
+	public void save(T t);
 	
+	public void update(T t);
+
+	public void delete(int id);
+	
+	public void deleteByIds(String ids);
+	
+	public T findById(int id);
+	
+	public List<T> findAll();
 
 }

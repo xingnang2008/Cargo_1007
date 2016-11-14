@@ -22,7 +22,7 @@ public class RoleAction extends BaseAction<Role> {
 	
 	
 	public void delete(){
-		this.roleService.delete(model);
+		this.roleService.delete(model.getId());
 	}
 	public List<Role> findAll(){
 		return this.roleService.findAll();
@@ -37,7 +37,7 @@ public class RoleAction extends BaseAction<Role> {
 	}
 
 	public String deleteByIds(){
-		userService.deleteByIds(ids);		
+		roleService.deleteByIds(ids);		
 		inputStream = new ByteArrayInputStream("true".getBytes());		
 		return "stream";
 	}

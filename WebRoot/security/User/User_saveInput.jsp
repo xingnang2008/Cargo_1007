@@ -21,7 +21,7 @@
 				if($("#ff").form("validate")){
 					//提交数据
 					$('#ff').form('submit', {    
-					    url:'<%=basePath%>admin/User/User-save',    
+					    url:'<%=basePath%>security/User/User-save',    
 					    success:function(){    
 							//关闭当前窗体
 							$.messager.show({
@@ -30,6 +30,9 @@
 								timeout:2000,
 								showType:'slide'
 							});
+							parent.$("#win").window("close");
+							//重载dg
+							parent.$("#dg").datagrid("reload");	
 										           
 					    }    
 					});  
@@ -71,11 +74,11 @@
     			</div>
     		
     		<div>
-    			<label for="roles">权&nbsp;&nbsp;限：</label>
+    			<label for="roles_id">权&nbsp;&nbsp;限：</label>
     			
-				<input name="rids" type="checkbox" value="1" />用户 
-				<input name="rids" type="checkbox" value="2" />管理员 
-				<input name="rids" type="checkbox" value="3" />财务 
+				<input name="role_id" type="radio" value="1" />用户 
+				<input name="role_id" type="radio" value="2" />管理员 
+				<input name="role_id" type="radio" value="3" />财务 
 				
     			</div>
     		<div> 

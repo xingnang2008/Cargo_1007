@@ -78,10 +78,10 @@
 <!-- 手动配上切面的事务，才会触发sessionFactory ，DAO中的getCurrectSession()才可以使用。否则提示no session -->
 <tx:annotation-driven transaction-manager="txManager"/>
 
- <bean id="txManager" class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+ <bean id="txManager" class="org.springframework.orm.hibernate4.HibernateTransactionManager" >
   <property name="sessionFactory" ref="sessionFactory" />
 </bean>
-<aop:config>
+<aop:config >
 		<aop:pointcut id="bussinessService"
 			expression="execution(public * com.cargo.service.*.*(..))" />
 		<aop:advisor pointcut-ref="bussinessService"
