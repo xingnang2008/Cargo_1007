@@ -1,0 +1,24 @@
+#container{
+		margin:auto;
+		width:900px;
+	}
+#top{
+		pardding:5px;
+		pardding:5px;
+		height:40px;
+		text-align:right;
+		border-bottom:2px solid #ECE7F5;
+	}
+.clabel{
+	width:100px;
+	height:40px;
+	float:left;
+}
+.hang{
+	width:220px;
+	}
+.xiang{
+	width:120px;
+	height:40px;
+	float:left;
+}

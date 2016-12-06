@@ -7,7 +7,7 @@ import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 
-import com.cargo.dao.BaseDao;
+import com.cargo.dao.IBaseDao;
 import com.cargo.dao.RoleDao;
 import com.cargo.model.Role;
 import com.cargo.service.BaseService;

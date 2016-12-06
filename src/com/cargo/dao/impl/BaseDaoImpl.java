@@ -9,9 +9,9 @@ import javax.annotation.Resource;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
-import com.cargo.dao.BaseDao;
+import com.cargo.dao.IBaseDao;
 @SuppressWarnings("unchecked")
-public class BaseDaoImpl<T> implements BaseDao<T> {
+public class BaseDaoImpl<T> implements IBaseDao<T> {
 	
 	private Class clazz;
 	

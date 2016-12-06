@@ -5,7 +5,7 @@ import java.util.Map;
 
 import com.cargo.model.User;
 
-public interface UserDao<User> extends BaseDao<User> {
+public interface UserDao<User> extends IBaseDao<User> {
 
 	public void save(User user);
 	public void update(User user);

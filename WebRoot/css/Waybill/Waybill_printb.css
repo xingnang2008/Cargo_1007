@@ -1,0 +1,289 @@
+
+	#container{
+				margin:auto;
+				height:1188px;
+				width:840px;
+				
+		}
+	#main{
+				height:1138px;
+				width:840px;
+				border:2px solid black;
+	}
+	#top{
+		width:840px;
+		height:45px;
+		}
+
+	.logo{
+		width:50px;
+		height:40px;
+		float:left;
+	}
+	.title{
+		width:599px;
+		height:40px;
+		float:left;
+	}
+	.title1{
+		width:189px;
+		height:40px;
+		float:left;
+	}
+	
+	#conInfo1{
+		width:840px;
+		height:242px;
+		border:1px solid black;
+	}
+	#senderDiv{		
+		width:469px;
+		height:240px;
+		float:left;
+		border-right:1px solid black;
+	}
+	#billInfo{
+		width:370px;
+		height:240px;
+		float:left;
+	
+	}
+	.hang1{
+		height:40px;
+	}
+	.label1{
+		width:284px;
+		height:40px;
+		float:left;
+	}
+	.h1xiang1{
+		width:234px;
+		height:40px;
+		float:left;
+	}
+	.label1{
+		width:234px;
+		height:40px;
+		float:left;
+	}
+	.h1xiang1{
+		width:234px;
+		height:40px;
+		float:left;
+	}
+	.label2{
+		width:204px;
+		height:40px;
+		float:left;
+	
+	}
+	.h1xiang2{
+		width:264px;
+		height:40px;
+		float:left;
+	}
+	.label3{
+		width:64px;
+		height:40px;
+		float:left;
+	
+	}
+	.h1xiang3{
+		width:404px;
+		height:40px;
+		float:left;
+	}
+		
+	#conInfo2{
+		width:840px;
+		height:242px;
+		border:1px solid black;
+	
+	}
+	#consigneeDiv{
+		width:468px;
+		height:240px;
+		float:left;
+		border-right:1px solid black;
+	}
+	
+	#moscInfo{
+		width:370px;
+		height:240px;
+		float:left;
+	
+	}
+	.rhang1{
+		width:370px;
+		height:50px;
+		
+	}
+	.rhlabel1{
+		width:180px;
+		height:50px;
+		float:left;
+	}
+	.rhxiang1{
+		width:190px;
+		height:50px;
+		float:left;
+	}
+	.rhang2{
+		width:370px;
+		height:100px;
+	
+	}
+	.rhlabel2{
+		width:180px;
+		height:100px;
+		float:left;
+	}
+	.rhxiang2{
+		width:190px;
+		height:100px;
+		float:left;
+	}
+	
+	.rhlabel3{
+		width:370px;
+		height:110px;
+	}
+	.rhang3{
+		width:370px;
+		height:90px;
+	}
+	.rhang31{
+		width:370px;
+		height:150px;
+	
+	}
+	#conInfo3{
+		
+		width:840px;
+		height:57px;
+	}
+	.goodsinfo{
+		width:130.5px;
+		height:55px;
+		float:left;
+		border:1px solid black;
+	}
+	.jzc{
+		width:113px;
+		height:55px;
+		float:left;
+		border:1px solid black;
+	
+	}
+	.rhang4{
+		width:840px;
+		height:202px;
+	}
+	.goodsinfo1{
+		width:130.5px;
+		height:200px;
+		float:left;
+		border:1px solid black;
+	}
+	.jzc1{
+		width:113px;
+		height:200px;
+		float:left;
+		border:1px solid black;
+	
+	}
+	.rhang5{
+		width:840px;
+		height:57px;
+	}
+	.items{
+		width:170px;
+		height:55px;
+		float:left;
+		border:1px solid black;
+	}
+	.rhang6{
+		width:840px;
+		height:102px;
+	}
+	.totalInfo{
+		width:130.5px;
+		height:100px;
+		float:left;
+		border:1px solid black;
+	}
+	.remarks{
+		width:170px;
+		height:100px;
+		float:left;
+		border:1px solid black;
+	
+	}
+	.remarks1{
+		width:401px;
+		height:100px;
+		float:left;
+		border:1px solid black;
+	
+	}
+	.rhang7{
+		width:840px;
+		height:50px;
+		border:1px solid black;
+	}
+	.call{
+		width:420px;
+		height:50px;
+		float:left;
+	}
+	.exchangeRate{
+		width:420px;
+		height:50px;
+		float:left;
+	}
+	.labelexchange{
+		margin:5px;
+		width:220px;
+		height:50px;
+		float:left;
+	}
+	.exchange{
+		width:220px;
+		height:50px;
+		float:left;
+	}
+	.rhang8{
+		width:840px;
+		height:40px;
+		border:1px solid black;
+	}
+	
+	.rhang9{
+		width:840px;
+		height:40px;
+		border:1px solid black;
+	}
+	.ruFont{
+		font-family: "Times New Roman", Times, serif;
+		font-size: 16px;
+	}
+	.redFont{
+		color:red;
+		font-family: "Times New Roman", Times, serif;
+		font-size: 28px;
+	}
+	.dataFont{
+		font-family: "Times New Roman", Times, serif;
+		font-size: 16px;
+	}
+	.billFont{
+		font-family: "Times New Roman", Times, serif;
+		font-size: 22px;
+	}
+	.titleFont{
+		font-family: "Times New Roman", Times, serif;
+		font-size: 30px;
+	}
+	p{
+		text-align:center;
+	}

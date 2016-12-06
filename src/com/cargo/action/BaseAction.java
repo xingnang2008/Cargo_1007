@@ -14,8 +14,30 @@ import org.apache.struts2.interceptor.RequestAware;
 import org.apache.struts2.interceptor.SessionAware;
 import org.springframework.stereotype.Component;
 
+import com.cargo.service.AdvanceRecordersService;
+import com.cargo.service.BitchService;
+import com.cargo.service.CustomerRelationService;
+import com.cargo.service.CustomerService;
+import com.cargo.service.DelayRecordService;
+import com.cargo.service.DestService;
+import com.cargo.service.DisburseService;
+import com.cargo.service.HuiQuoteService;
+import com.cargo.service.IndemnifyService;
+import com.cargo.service.LineService;
+import com.cargo.service.MarkService;
+import com.cargo.service.ProcuratorRecordersService;
+import com.cargo.service.ProcuratorService;
+import com.cargo.service.QuoteService;
+import com.cargo.service.RaterService;
+import com.cargo.service.RebateService;
+import com.cargo.service.RebatecustomerService;
+import com.cargo.service.RebategoodsService;
+import com.cargo.service.ReceiptService;
 import com.cargo.service.RoleService;
+import com.cargo.service.SenderService;
+import com.cargo.service.TrackService;
 import com.cargo.service.UserService;
+import com.cargo.service.WaybillService;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
 @SuppressWarnings("restriction")
@@ -53,8 +75,50 @@ public abstract class BaseAction<T> extends ActionSupport implements Application
 	protected UserService userService;
 	@Resource
 	protected RoleService roleService;
-	
-	
+	@Resource
+	protected RebateService rebateService;
+	@Resource
+	protected WaybillService waybillService;
+	@Resource
+	protected RebategoodsService rebategoodsService;
+	@Resource
+	protected RebatecustomerService rebatecustomerService;
+	@Resource
+	protected CustomerService customerService;	
+	@Resource
+	protected DestService destService;	
+	@Resource
+	protected LineService lineService;
+	@Resource
+	protected MarkService markService;
+	@Resource
+	protected RaterService raterService;
+	@Resource
+	protected SenderService senderService;
+	@Resource
+	protected BitchService bitchService;
+	@Resource
+	protected CustomerRelationService customerRelationService;
+	@Resource
+	protected IndemnifyService indemnifyService;
+	@Resource
+	protected TrackService trackService;
+	@Resource
+	protected ProcuratorService procuratorService;
+	@Resource
+	protected ReceiptService receiptService;
+	@Resource
+	protected DelayRecordService delayRecordService;
+	@Resource
+	protected QuoteService quoteService;
+	@Resource
+	protected HuiQuoteService huiQuoteService;
+	@Resource
+	protected DisburseService disburseService;
+	@Resource
+	protected ProcuratorRecordersService procuratorRecordersService;
+	@Resource
+	protected AdvanceRecordersService advanceRecordersService;
 	public BaseAction(){
 		ParameterizedType type= (ParameterizedType)this.getClass()
 										.getGenericSuperclass();

@@ -12,6 +12,7 @@
 
 	<head>
 		<meta charset="utf-8">
+		<link rel="shortcut icon" href="<%=basePath%>resources/image/favicon2.ico" />
 		<link rel="stylesheet" type="text/css"
 			href="<%=basePath%>script/jquery-easyui-1.4.3/themes/default/easyui.css">
 		<link rel="stylesheet" type="text/css"

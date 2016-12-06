@@ -1,0 +1,42 @@
+*{
+		margin:0;
+		padding:0;
+	}
+#container{
+				width:100%;
+				height:100%
+		}
+#searchDiv{
+		margin:0;
+		padding:2px;			
+		width:100%;
+}
+.line{
+	width:100%;
+	height:30px;
+}
+.hang{
+			width:130px;
+			float:left;
+}		
+.label{
+			width:80px;
+			float:left;
+}
+#tableHH{
+			width:100%;
+			height:87%;			
+}
+#tableDG{
+			width:100%;
+			height:95%;
+			float:left;
+}
+
+#bottom{
+	
+		margin:1px;
+		padding:1px;
+		width:100%;
+		height:25px;
+	}

@@ -1,0 +1,270 @@
+	*{
+		margin:0;
+		padding:0;
+		}
+	#container{
+				margin:auto;
+				height:1188px;
+				width:840px;
+				border:2px solid black;
+				background:#fff;
+		}
+	.top{
+			margin:10px;
+			width:840px;
+			height:40px;
+			
+		}
+	.t-kuaif{
+			width:200px;
+			float:left;
+		}
+	.t-kuais{
+		text-align:center;
+		width:219px;
+		float:left;
+	}
+	.conInfo{
+		width:840px;
+		height:420px;
+		border-top:1px solid black;
+		border-bottom:1px solid black;
+	}
+	.conInfoLeft{
+		width:569px;
+		float:left;
+		border:1px solid black;
+	}
+	.conInfoRight{
+		width:267px;
+		height:420px;
+		float:right;
+		border:1px solid black;
+	}
+	.senderDiv{		
+		width:568px;
+		height:138px;
+		border-bottom:2px solid black;
+	}
+	
+	.h1{
+		padding:5px;
+		width:215px;
+		height:59px;
+		float:left;
+	}
+	.h1xiang{
+		padding:5px;
+		width:332px;
+		height:59px;
+		float:left;
+	}
+	.consigneeDiv{
+		width:567px;
+		height:278px;
+	}
+	.h2{
+		padding:5px;
+		width:160px;
+		height:59px;
+		float:left;
+		}
+	.h2xiang{
+		padding:5px;
+		width:382px;
+		height:59px;
+		float:left;
+	}
+	
+	.h3{
+		width:82px;
+		height:40px;
+		float:left;
+	}
+	.h3xiang{
+		width:184px;
+		height:40px;
+		float:left;
+	}
+	.moscInfo{
+		width:840px;
+		height:90px;
+		border:1px solid black;
+	}
+	.h4{
+		width:200px;
+		height:90px;
+		float:left;
+		vertical-align:middle;
+	}
+	.h4 p{
+		margin-top:20px;
+	}
+	.h4xiang{
+		width:639px;
+		height:90px;
+		vertical-align:middle; 
+		float:left;
+	}
+	.h4xiang p{
+		margin-top:40px;;
+		
+	}
+	.itemInfo{
+		width:840px;
+		height:385px;
+		float:left;
+		
+	}
+	.itemLeft{
+		width:588px;
+		float:left;
+		border:1px solid black;
+	}
+	.h5{
+		width:105px;
+		height:50px;
+		float:left;
+		border:1px solid black;
+	}
+	.h6{
+		width:158px;
+		height:50px;
+		float:left;
+		border:1px solid black;
+	}
+	.h7{
+		width:105px;
+		height:170px;
+		float:left;
+		border:1px solid black;
+		padding-top:80px;
+	}
+	.h8{
+		width:158px;
+		height:170px;
+		float:left;
+		border:1px solid black;
+		padding-top:80px;
+	}
+	
+	.itemTotal{
+		width:588px;
+		height:80px;
+		border:1px solid black;
+		float:left;
+	}
+	.h9{
+		width:105px;
+		height:49px;
+		float:left;
+		border:1px solid black;
+		padding-top:30px;
+	}
+	
+	.h10{
+		width:105px;
+		height:49px;
+		float:left;
+		border:1px solid black;
+		padding-top:30px;
+	}
+	.h11{
+		width:264px;
+		height:49px;
+		float:left;
+		border:1px solid black;
+		padding-top:30px;
+	}
+	.itemRight{
+		width:248px;
+		height:383px;
+		float:right;
+		border:1px solid black;
+	}
+	.hang1{
+		height:70px;
+	}
+	.hang2{
+		height:50px;
+	}
+	.hang3{
+		height:50px;
+		border:1px solid black;
+	}
+	.h12{
+		width:130px;
+		height:330px;
+		float:left;
+		
+	}
+	.h13{
+		width:116px;
+		height:330px;
+		float:left;
+		
+	}
+	.h12g{
+		width:130px;
+		height:53.7px;
+		border:1px solid black;
+	}
+	.h13x{
+		width:116px;
+		height:33.7px;
+		border:1px solid black;
+		padding-top:20px;
+	}
+	.bottom{
+		width:840px;
+		height:200px;
+		float:left;
+		
+	}
+	.remarkInfo{
+		width:839px;
+		height:120px;
+		padding:5px;
+		
+	}
+	.dateInfo{
+		width:839px;
+		height:80px;
+		
+		
+	}
+	#signdate{
+		padding-right:30px;
+		float:right;
+	}
+	.logo{
+		margin:8px;
+		width:249px;
+		height:80px;
+	}
+	.ruFont{
+		font-family: "Times New Roman", Times, serif;
+		font-size: 16px;
+	}
+	.redFont{
+		color:red;
+		font-family: "Times New Roman", Times, serif;
+		font-size: 30px;
+	}
+	.dataFont{
+		font-family: "Times New Roman", Times, serif;
+		font-size: 16px;
+	}
+	.billFont{
+		font-family: "Times New Roman", Times, serif;
+		font-size: 26px;
+	}
+	.custFont{
+		font-family: "Times New Roman", Times, serif;
+		font-size: 18px;
+	}
+	
+	p{
+		text-align:center;
+		font-size:22px;
+	}

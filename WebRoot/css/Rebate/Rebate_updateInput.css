@@ -1,0 +1,76 @@
+		*{
+			padding:0;
+			margin:0;
+		}
+		body{
+			text-align:center;
+		}
+		#container{
+			margin:auto;
+			width:1021px;		
+			
+		}
+		
+		#middle{
+			width:1015px;
+		}
+		#lside{
+			width:300px;
+			height:575px;
+			background:#ffbd9d;
+			float:left;
+		}
+		#rside{
+			margin:1px;
+			width:699px;
+			height:575px;	
+			background:green;			
+			float:right;
+			
+		}
+		#rsidetop{
+			margin:1px;
+			width:698px;
+			height:280px;
+			background:white;
+		
+		}
+		
+		#rsidefooter{
+			margin:1px;
+			width:698px;
+			height:270px;
+			background:white;
+			
+		}
+		#retab{
+			margin:auto;			
+			margin-top:20px;			
+			text-align:left;
+			
+		}
+		.hang{
+			width:300px;
+			height:25px;
+			margin:2px;
+			padding:2px;
+		}
+		.longtd{
+			width:160px;
+		}
+		.midtd{
+			width:100px;
+		}
+		.shorttd{
+			width:50px;
+		}
+		.flabel{
+			width:100px;
+			float:left;
+		}
+		.fdata{
+			width:180px;
+			float:right;
+		}
+		
+		

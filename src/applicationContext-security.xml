@@ -12,19 +12,18 @@
 	<http pattern="/resources" security="none" />
 	<!--配置拦截页面 -->
 	<http auto-config="true" use-expressions="true" >
-		<intercept-url pattern="/index.jsp" access="hasAnyRole('ROLE_USER','ROLE_ADMIN','ROLE_CAIWU','ROLE_SUPER')" />
 		<intercept-url pattern="/jsp/**" access="hasAnyRole('ROLE_USER','ROLE_ADMIN','ROLE_CAIWU')" />
-		<intercept-url pattern="/admin/**" access="hasAnyRole('ROLE_ADMIN','ROLE_CAIWU','ROLE_SUPER')" />
+		<intercept-url pattern="/admin/**" access="hasAnyRole('ROLE_USER','ROLE_ADMIN','ROLE_CAIWU','ROLE_SUPER')" />
 		<intercept-url pattern="/security/**" access="hasAnyRole('ROLE_SUPER')" />
 		<!-- 配置登录页面  -->
 		<form-login login-page="/login.jsp" login-processing-url="/j_spring_security_check"
 			authentication-failure-url="/login.jsp?error=true"
-			default-target-url="/index.jsp" always-use-default-target="true"
+			default-target-url="/admin/index.jsp" always-use-default-target="true"
 			 />
 			  <access-denied-handler error-page="/403.html" />
 		<!-- 用户退出的跳转页面 -->
 
-		<logout invalidate-session="true" logout-url="/j_spring_security_logout" />
+		<logout invalidate-session="true"  logout-success-url="/login.jsp"  logout-url="/j_spring_security_logout" />
 	</http>
 
 
