@@ -1,12 +1,12 @@
 package com.cargo.action;
 
 import java.io.ByteArrayInputStream;
-import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.stereotype.Component;
 
 import com.cargo.model.Disburse;
+import com.cargo.model.dto.OutFee;
 @Component
 public class DisburseAction extends BaseAction<Disburse> {
 	
@@ -36,7 +36,10 @@ public class DisburseAction extends BaseAction<Disburse> {
 		inputStream = new ByteArrayInputStream("true".getBytes());		
 		return "stream";
 	}
-	
+	public String listLineFee(){
+		pageMap = this.disburseService.listOutFeeByLine(model.getLineId());
+		return "jsonMap";
+	}
 	
 
 }

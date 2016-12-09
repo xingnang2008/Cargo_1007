@@ -91,6 +91,10 @@
 			</div>
 			
 		</div>
+		
+		<hr/>
+		<br/>
+		<div> <h2>导出欠款明细</h2></div>
 		<form id="ff2"  method="post">
 			
 			<div class="label">发货人</div>

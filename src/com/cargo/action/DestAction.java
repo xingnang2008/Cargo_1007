@@ -26,14 +26,9 @@ public class DestAction extends BaseAction<Dest> {
 		return "jsonList";
 	}
 	public String deleteByIds(){
-		List list = this.waybillService.listByDestIds(ids);
-		if(list.size()==0){
 		this.destService.deleteByIds(ids);
 		inputStream = new ByteArrayInputStream("true".getBytes());		
-		
-		}else{
-			inputStream = new ByteArrayInputStream("false".getBytes());;
-		}
+			
 		return "stream";
 	}
 	public String listByDestName(){

@@ -10,6 +10,7 @@ import org.springframework.stereotype.Component;
 
 import com.cargo.dao.DisburseDao;
 import com.cargo.model.Disburse;
+import com.cargo.model.dto.OutFee;
 
 @Component("disburseService")
 public class DisburseService {
@@ -40,5 +41,7 @@ public class DisburseService {
 		return this.dao.findById(id);
 	}
 	
-	
+	public Map listOutFeeByLine(String lineId){
+		return this.dao.listOutFeeByLine(lineId);
+	}
 }

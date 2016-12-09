@@ -93,6 +93,18 @@ public class TrackDao extends BaseDao {
 			throw re;
 		}
 	}
+	public Double countOutDelayIndemByBitch(String bitch){
+		
+		try {
+			String queryString = "select sum(outIndemnity) from Track t where t.bitch =:bitch";
+			Double sum =  (Double)getSession().createQuery(queryString)
+			.setString("bitch",bitch).uniqueResult();
+			
+			return sum!=null?sum:0.0;
+		} catch (RuntimeException re) {
+			throw re;
+		}
+	}
 	public Boolean CheckPics(String waybill,Integer pics){
 		Boolean isRight = false;
 		try {

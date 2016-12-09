@@ -2,15 +2,26 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
   <head>
-   <%@include file="../head.jspf" %>
     
-    <title>My JSP 'Rebategoods_saveInput.jsp' starting page</title>
+   
     
-	<!--
-	<link rel="stylesheet" type="text/css" href="styles.css">
-	-->
-<script type="text/javascript">
-		$(function(){
+	<%@include file="../head.jspf" %>
+	 <script language="JavaScript" >
+	 $(function(){
+			var rows =parent.$("#dg").datagrid("getSelections");
+			$("#ff").form('load',{
+				id:rows[0].id,				
+				bitch:rows[0].bitch,
+				lineId:rows[0].lineId,
+				payFor:rows[0].payFor,	
+				payDate:rows[0].payDate,
+				payMethod:rows[0].payMethod,	
+				sortId:rows[0].sortId,
+				fee:rows[0].fee,		
+				remarks:rows[0].remarks
+				//更新form中的数据
+			});	
+			
 			//窗体弹出时默认禁用验证
 			$("#ff").form("disableValidation");
 			
@@ -20,8 +31,10 @@
 				//如果验证成功，则提交数据
 				if($("#ff").form("validate")){
 					//提交数据
+					//提交数据
 					$('#ff').form('submit', {    
-					    url:'<%=basePath%>admin/Disburse/Disburse-save.action',    
+					    url:'<%=basePath%>admin/Disburse/Disburse-update.action',    
+					    
 					    success:function(){    
 							//关闭当前窗体
 							parent.$("#win").window("close");
@@ -29,9 +42,9 @@
 							parent.$("#dg").datagrid("reload");				           
 					    }    
 					});  
-					
 				}
 			});
+			
 			//线路选择框
 			$("#lineId").combobox({
 				url:'<%=basePath%>admin/Line/Line-listAll.action',
@@ -59,18 +72,14 @@
         	  
 			}); 
 		})
-	
-	
-	</script>
+	 </script>	
 
   </head>
   
   <body>
-  <form id="ff" method="post">
-   	 <div >
-    	
-    		
-    			<div>
+	<div >
+    	<form id="ff" method="post">
+    		<div>
     			<label for="lineId">线&nbsp;&nbsp;路：</label>
     			<input id="lineId" type="text" name="lineId" />
     			</div>
@@ -107,20 +116,17 @@
     			</div>
     			<div>
     			
-			        	<input type="hidden"   value="0"  name="sortId" />
+			        	<input type="hidden" name="sortId" />
+			        	<input type="hidden" name="id"/>
     					<!-- 这里默认为0 是用来付款里分类为：付清关费 -->
     			</div>  
-    		
     		<hr/>  	
     		<div>
     			<a id="btn" href="#" class="easyui-linkbutton" data-options="iconCls:'icon-save'">保存</a>
     			
     		</div>
     	
-    	</div>	
-    
-    	
-   	
-    </form>
-  </body>
+    	</form>
+    </div>
+</body>
 </html>

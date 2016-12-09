@@ -1,9 +1,14 @@
 package com.cargo.dao;
 
+import java.math.BigDecimal;
+import java.text.DecimalFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import javax.annotation.Resource;
 
 import org.hibernate.Criteria;
 import org.hibernate.Query;
@@ -12,9 +17,41 @@ import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Component;
 
+import com.cargo.model.Bitch;
 import com.cargo.model.Disburse;
+import com.cargo.model.dto.OutFee;
 @Component
 public class DisburseDao extends BaseDao {
+	
+	private BitchDao bitchDao;
+	private IndemnifyDao indemnifyDao;
+	private TrackDao trackDao;
+	
+	public BitchDao getBitchDao() {
+		return bitchDao;
+	}
+	@Resource
+	public void setBitchDao(BitchDao bitchDao) {
+		this.bitchDao = bitchDao;
+	}
+	
+	
+	public IndemnifyDao getIndemnifyDao() {
+		return indemnifyDao;
+	}
+	@Resource
+	public void setIndemnifyDao(IndemnifyDao indemnifyDao) {
+		this.indemnifyDao = indemnifyDao;
+	}
+	
+	public TrackDao getTrackDao() {
+		return trackDao;
+	}
+	@Resource
+	public void setTrackDao(TrackDao trackDao) {
+		this.trackDao = trackDao;
+	}
+	
 	
 	public void save(Disburse transientInstance) {
 		//log.debug("saving Rebate instance");
@@ -99,5 +136,60 @@ public class DisburseDao extends BaseDao {
 		pageMap.put("total",rowCount);	
 		
 		return pageMap;
+	}
+	public Map listOutFeeByLine(String lineId){
+		try {
+			String hql ="select bitch,sum(outSum) from Waybill w where w.lineId =:lineId group by bitch order by bitch desc";
+			List<Object[]> results = getSession().createQuery(hql)
+			.setString("lineId",lineId)
+			.list();
+			Map<String,Object> pageMap = new HashMap<String,Object>();	
+			List<OutFee> list = new ArrayList();			
+			if(results!=null&&results.size()>0){
+				
+			    String bch = "";//批次			    
+			    Number outsum =0;
+			   			    			    
+			    for(Object[] obj:results){
+			       bch = obj[0]!=null?(String) obj[0]:"";
+			       outsum= obj[1]!=null?Double.parseDouble(obj[1].toString()):BigDecimal.ZERO;
+			       
+			  
+			       DecimalFormat dfw = new DecimalFormat("0.0");
+			       OutFee of = new OutFee();
+			       Double osum = Double.parseDouble(dfw.format(outsum));
+			       Double oInd =indemnifyDao.countOutFeeByBitch(bch);
+			       Double oDelay =trackDao.countOutDelayIndemByBitch(bch);
+			       Double ofee = osum-oInd-oDelay;
+			       Double actOf =countDisburseByBitch(bch);
+			       of.setBitch(bch);
+			       of.setLineId(lineId);
+			       of.setOutSum(osum);
+			       of.setOutIndem(oInd);
+			       of.setOutDelayIndem(oDelay);
+			       of.setOutFee(ofee.intValue());
+			       of.setActOutFee(actOf.intValue());
+			       list.add(of);
+			    }
+			}
+			pageMap.put("rows",list);
+			pageMap.put("total",list.size());	
+			return pageMap;
+		} catch (RuntimeException re) {
+			throw re;
+		}
+	}
+	
+	public Double countDisburseByBitch(String bitch){
+		
+		try {
+			String queryString = "select sum(fee) from Disburse d where d.bitch =:bitch";
+			Double sum =  (Double)getSession().createQuery(queryString)
+			.setString("bitch",bitch).uniqueResult();
+			
+			return sum!=null?sum:0.0;
+		} catch (RuntimeException re) {
+			throw re;
+		}
 	}
 }

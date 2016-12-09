@@ -97,15 +97,12 @@ public class WaybillAction extends BaseAction<Waybill> {
 	}
 	//配仓更新状态
 	public String updateTrackOnSendByIds(){
-		System.out.println("装机仓单号："+cangid);
 		waybillService.updateTrackOnSend(ids,sid,cangid);
 		inputStream = new ByteArrayInputStream("true".getBytes());
 		return "stream";
 	}
 	//更新运输状态
 	public String updateWaybillStatus(){
-		System.out.println("运输状态号 ："+sid);
-		System.out.println("运单id号 ："+ids);
 		waybillService.updateWaybillStatusByWaybills(ids,sid);
 		inputStream = new ByteArrayInputStream("true".getBytes());
 		return "stream";
@@ -113,8 +110,6 @@ public class WaybillAction extends BaseAction<Waybill> {
 	
 	//更新运输状态 By Waybills 
 	public String updateWaybillStatusByWaybills(){
-		System.out.println("运输状态号 ："+sid);
-		System.out.println("运单号组 ："+waybills);
 		waybillService.updateWaybillStatusByWaybills(waybills,sid);
 		inputStream = new ByteArrayInputStream("true".getBytes());
 		return "stream";
@@ -224,8 +219,7 @@ public class WaybillAction extends BaseAction<Waybill> {
 		return "ERROR";
 	}
 	public String inputFromOutchargeExcel(){
-		System.out.println("File is null? "+ (excelFile == null));
-		System.out.println("FileName is "+ excelFileFileName );
+		
 		try {
 			String returnMarks= this.waybillService.checkOutchargeExcel(excelFile, excelFileFileName);
 			if(returnMarks == ""){

@@ -139,7 +139,20 @@ public class IndemnifyDao extends BaseDao {
 			throw re;
 		}
 	}
-	
+	//用于累加赔偿金额。
+	public Double countOutFeeByBitch(String bitch){
+		
+		try {
+								
+			String queryString = "select sum(outIndemnity) from Indemnify i where i.bitch =:bitch";
+			Double sum = (Double)getSession().createQuery(queryString)
+			.setString("bitch",bitch).uniqueResult();
+			
+			return sum!=null?sum:0.0;
+		} catch (RuntimeException re) {
+			throw re;
+		}
+	}
 	public Indemnify findByWaybill(String waybill){
 		
 		try {

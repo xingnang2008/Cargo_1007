@@ -124,15 +124,21 @@
 				<ul>
 					<li><a href="#" title="Waybill/Waybill_track.jsp">货物跟踪</a></li>
 					<li><a href="#" title="Track/Track_list.jsp">到货管理</a></li>
+					<li><a href="#" title="Indemnify/Indemnify_list.jsp">赔偿管理</a></li>
+					<li><a href="#" title="Track/Track_applist.jsp">晚到赔偿</a></li>
 					
+				</ul>
+				</div>
+				<div title="外结费用">
+				<ul>
+					<li><a href="#" title="Disburse/Disburse_list.jsp">外付款</a></li>	
+					<li><a href="#" title="Disburse/Disburse_listFee.jsp">外付款对账</a></li>	
 				</ul>
 				</div>
 				<div title="财务管理">
 				<ul>
-					<li><a href="#" title="Waybill/Waybill_raterReport.jsp">财务报表</a></li>
-					<li><a href="#" title="Bitch/Bitch_totalList.jsp">批次毛利</a></li>	
-					<li><a href="#" title="Waybill/Waybill_advancedReport.jsp">垫付款报表</a></li>
-					<li><a href="#" title="Waybill/Waybill_allBitchReport.jsp">批次统计报表</a></li>
+					
+					<li><a href="#" title="Waybill/Waybill_fee.jsp">运单收支</a></li>
 					<li><a href="#" title="Receipt/Receipt_list.jsp">收款管理</a></li>
 					<li><a href="#" title="Receipt/Receipt_listGroup.jsp">收款明细</a></li>
 					<li><a href="#" title="Receipt/Receipt_listByDate2.jsp">客户收款查询</a></li>
@@ -141,12 +147,16 @@
 					<li><a href="#" title="ProcuratorRecorders/ProcuratorRecorders_list.jsp">已结代理费</a></li>
 					<li><a href="#" title="Waybill/Waybill_listAdvanceFee.jsp">垫付款</a></li>						
 					<li><a href="#" title="AdvanceRecorders/AdvanceRecorders_list.jsp">已结垫付款</a></li>
-					<li><a href="#" title="Disburse/Disburse_list.jsp">外付款</a></li>			
-					
-					<li><a href="#" title="Indemnify/Indemnify_list.jsp">赔偿管理</a></li>
-					<li><a href="#" title="Track/Track_applist.jsp">晚到赔偿</a></li>
-					<li><a href="#" title="Waybill/Waybill_fe e.jsp">运单收支</a></li>
 					<li><a href="#" title="Waybill/Waybill_arrearages.jsp">欠款总计</a></li>
+				
+				</ul>
+				</div>
+				<div title="财务报表">
+				<ul>
+					<li><a href="#" title="Waybill/Waybill_raterReport.jsp">财务报表</a></li>
+					<li><a href="#" title="Bitch/Bitch_totalList.jsp">批次毛利</a></li>	
+					<li><a href="#" title="Waybill/Waybill_advancedReport.jsp">垫付款报表</a></li>
+					<li><a href="#" title="Waybill/Waybill_allBitchReport.jsp">批次统计报表</a></li>
 				
 				</ul>
 				</div>
