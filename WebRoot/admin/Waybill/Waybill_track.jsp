@@ -175,58 +175,7 @@
 
 						}
 		 			}
-					},{	
-						text:"收款日期：<input type='text' id='rDate' />"
-					},{
-						iconCls: 'icon-edit',
-						text:'收款',
-						handler: function(){
-						var rows =$("#dg").datagrid("getSelections");
-						var receiptDate = $('#rDate').combobox('getValue');
-						
-						if(receiptDate ==""){
-							$.messager.show({
-								title:'选择收款日期',
-								msg:'请选择收款日期',
-								timeout:2000,
-								showType:'slide'
-							});
-						}else{
-						if(rows.length ==0){
-							$.messager.show({
-								title:'选择行',
-								msg:'至少要选中一行，进行锁定操作。',
-								timeout:2000,
-								showType:'slide'
-							});
-
-						}else{
-									//获取被选中的记录，后从记录中获取相应的id
-							//获取被选中的记录，后从记录中获取相应的id
-							var waybills ="";
-							for(var i=0;i<rows.length;i++){
-								waybills += rows[i].waybill+",";
-							}
-							//拼接id的值
-							waybills = waybills.substring(0,waybills.lastIndexOf(","));
-							
-							//发送ajax请求
-							$.post("<%=basePath%>admin/Receipt/Receipt-updateWaybillsReceipt.action",{waybills:waybills,receiptDate:receiptDate},function(result){
-
-										if(result =="true"){
-											//取消选中所有行
-											$("#dg").datagrid("uncheckAll");
-											//重新刷新页面
-											$("#dg").datagrid("reload");
-										}						
-									
-									},"text");
-
-						}
-
-						}
-		 			}
-					}
+					},"-"
 					,{	
 						text:"状态：<input type='text' id='status' />"   
 					   
@@ -477,27 +426,6 @@
 			]],
 			toolbar: [
 				{
-				iconCls: 'icon-edit',
-				text:'编辑',
-				handler: function(){
-				var rows =$("#dgTrack").datagrid("getSelections");
-				if(rows.length !=1){
-					$.messager.show({
-						title:'错误提示',
-						msg:'一次只能更新一条记录',
-						timeout:2000,
-						showType:'slide'
-					});
-				}else{
-					//1.完成弹出更新页面
-					$("#win").window({
-						title:'更新',
-						width:'100%',
-						height:'100%',
-						content:'<iframe title="" src="<%=basePath%>admin/Track/Track_updateInput.jsp" frameborder="0" width="100%" height="100%"/>'
-					});
-			}}},
-				'-',{
 					iconCls: 'icon-remove',
 					text:'删除',
 					handler: function(){
@@ -512,7 +440,7 @@
 
 					}else{
 						//提示是否删除，如果确认，执行删除
-						$.messager.confirm("删除确认对话框","是否要删除选中的记录",function(r){
+						$.messager.confirm("删除确认对话框","是否要 <font color='red'> <B>删除</B> </font> 选中的记录",function(r){
 							if(r){
 								//获取被选中的记录，后从记录中获取相应的id
 								var ids ="";
@@ -619,7 +547,7 @@
 			editable:true,
 			valueField:'lineId',
 			textField:'lineId',
-			panelHeight:200,
+			panelHeight:300,
 			panelWidth:120,
 			width:120,
 			onSelect: function(rec){    
@@ -633,7 +561,7 @@
 			
 			valueField:'bitch',
 			textField:'bitch',
-			panelHeight:200,
+			panelHeight:300,
 			panelWidth:120,
 			width:120
 		}); 

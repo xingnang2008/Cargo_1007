@@ -15,6 +15,9 @@ public class TrackAction extends BaseAction<Track> {
 	private Integer editId;
 	private Integer md;
 	private Double drate;
+	private Date outsddate;
+	private Integer outindate;
+	private Double outdelayrate;
 	private Integer indate;
 	private InputStream downStream;
 	
@@ -48,11 +51,7 @@ public class TrackAction extends BaseAction<Track> {
 		return "stream";
 	}
 	public String createTrRecord(){
-		System.out.println("TrackAction--ids:"+ids);
-		System.out.println("TrackAction--md:"+md);
-		System.out.println("TrackAction--drate:"+drate);
-		System.out.println("TrackAction--inDate:"+indate);
-		trackService.updateCreatRecord(ids,md,drate,indate);
+		trackService.updateCreatRecord(ids,md,drate,indate,outsddate,outindate,outdelayrate);
 		inputStream = new ByteArrayInputStream("true".getBytes());		
 		return "stream";
 	}
@@ -126,6 +125,24 @@ public class TrackAction extends BaseAction<Track> {
 	}
 	public void setEditId(Integer editId) {
 		this.editId = editId;
+	}
+	public Date getOutsddate() {
+		return outsddate;
+	}
+	public void setOutsddate(Date outsddate) {
+		this.outsddate = outsddate;
+	}
+	public Integer getOutindate() {
+		return outindate;
+	}
+	public void setOutindate(Integer outindate) {
+		this.outindate = outindate;
+	}
+	public Double getOutdelayrate() {
+		return outdelayrate;
+	}
+	public void setOutdelayrate(Double outdelayrate) {
+		this.outdelayrate = outdelayrate;
 	}
 	
 }

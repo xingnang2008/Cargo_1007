@@ -66,67 +66,102 @@
 					{field:'waybill',title:'运单号' ,align:'center',width:150},
 					
 				]],
-				toolbar: [
-					{
-						iconCls: 'icon-remove',
-						text:'删除记录',
+				toolbar: [{
+					iconCls: 'icon-edit',
+					text:'编辑',
+					handler: function(){
+					var rows =$("#dg").datagrid("getSelections");
+					if(rows.length !=1){
+						$.messager.show({
+							title:'错误提示',
+							msg:'一次只能更新一条记录',
+							timeout:2000,
+							showType:'slide'
+						});
+					}else{
+						//1.完成弹出更新页面
+						$("#win").window({
+							title:'更新记录',
+							width:'100%',
+							height:'100%',
+							content:'<iframe title="" src="Track_updateInput.jsp" frameborder="0" width="100%" height="100%"/>'
+						});
+				}}}
+					,{	
+						text:"赔偿方式：<input type='text' id='model' />"   
+					   
+					},{	
+						text:"赔偿系数：<input type='text' class='easyui-textbox' id='delayRate'/>"
+					},{	
+						text:"承诺运期：<input type='text' class='easyui-textbox' id='inDate' />"
+					},{	
+						text:"外配日期：<input type='text' class='easyui-datebox' id='outSdDate'/>"
+					},{	
+						text:"外承诺运期：<input type='text' class='easyui-textbox' id='outInDate'/>"
+					},{	
+						text:"外赔系数：<input type='text' class='easyui-textbox' id='outDelayRate'/>"
+					},{
+						iconCls: 'icon-redo',
+						text:'生成晚到赔偿',
 						handler: function(){
 						var rows =$("#dg").datagrid("getSelections");
+						var dRate = $("#delayRate").val();
+						var md = $('#model').combobox('getValue');
+						var indate =$("#inDate").val();
+						var outsd =$("#outSdDate").combobox('getValue');
+						var outind =$("#outInDate").val();
+						var outdr =$("#outDelayRate").val();
+						
+						if(md ==""){
+							$.messager.show({
+								title:'选择输入赔偿系数',
+								msg:'计算晚到赔偿，必须要填写赔偿系数',
+								timeout:2000,
+								showType:'slide'
+							});
+						}else{
 						if(rows.length ==0){
 							$.messager.show({
 								title:'选择行',
-								msg:'至少要选中一行，进行删除操作。',
+								msg:'至少要选中一行，进行赔偿操作。',
 								timeout:2000,
 								showType:'slide'
 							});
 
 						}else{
-							//提示是否删除，如果确认，执行删除
-							$.messager.confirm("删除确认对话框","是否要删除选中的记录",function(r){
-								if(r){
 									//获取被选中的记录，后从记录中获取相应的id
 									var ids ="";
-									var waybills =""
 									for(var i=0;i<rows.length;i++){
 										ids += rows[i].id+",";
-										waybills += rows[i].waybill+",";
 									}
 									//拼接id的值
 									ids = ids.substring(0,ids.lastIndexOf(","));
-									waybills = waybills.substring(0,waybills.lastIndexOf(","));
+									
 									//发送ajax请求
-									$.post("Track-deleteByIds.action",{ids:ids,waybills:waybills},function(result){
+									$.post("<%=basePath%>admin/Track/Track-createTrRecord.action",{ids:ids,md:md,drate:dRate,indate:indate,outsddate:outsd,outindate:outind,outdelayrate:outdr},function(result){
 										if(result =="true"){
-											$.messager.show({
-												title:'删除成功',
-												msg:'删除成功',
-												timeout:2000,
-												showType:'slide'
-											
-											});
+
 											//取消选中所有行
 											$("#dg").datagrid("uncheckAll");
 											//重新刷新页面
-											$("#dg").datagrid("reload");
-											
-										}else{
+											$("#dg").datagrid("reload"); 
+										}else if(result =="exsit"){
 											$.messager.show({
-												title:'删除错误',
-												msg:'删除失败,必须先删除此单下的货物明细！',
+												title:'赔偿记录已存在。',
+												msg:'此运单的晚到赔偿记录已经存在。',
 												timeout:2000,
 												showType:'slide'
 											});
-										}
+										}						
+									
 									},"text");
-								}
-							});
+								
+								
+
 						}
+
 						}
-					},
-					{
-						iconCls: 'icon-reload',
-						text:'刷新',
-						handler: function(){$("#dg").datagrid("reload");}
+		 			}
 					},{
 						iconCls: 'icon-redo',
 						text:'审核赔偿',
@@ -284,7 +319,7 @@
 			editable:true,
 			valueField:'lineId',
 			textField:'lineId',
-			panelHeight:'auto',
+			panelHeight:300,
 			panelWidth:120,
 			width:120,
 			onSelect: function(rec){    
@@ -297,16 +332,31 @@
 			
 			valueField:'bitch',
 			textField:'bitch',
-			panelHeight:200,
+			panelHeight:300,
 			panelWidth:120,
 			width:120
 		}); 
+		$("#delayRate").textbox({
+			width:60
+		});
+		$("#inDate").textbox({
+			width:60
+		});
+		$("#outInDate").textbox({
+			width:60
+		});
+		$("#outDelayRate").textbox({
+			width:60
+		});
+		
+		$('#outSdDate').datebox();
+		
 		$("#model").combobox({
 			valueField: 'value',
 			textField: 'label',
 			panelHeight:'auto',
-			panelWidth:150,
-			width:150,
+			panelWidth:100,
+			width:100,
 			data: [{
 				label: '按天计算',
 				value: '0'
@@ -349,7 +399,7 @@
     	    }
     	    //新增  显示统计信息
     	   $("#pic").text(picTotal);
-    	   $("#delayFee").text(delay);
+    	   $("#delayFee").text(Math.round(delay));
       }
 	
 	</script>

@@ -287,7 +287,7 @@ public class TrackService {
 	}
 	
 	//实现在到货页面直接生成晚到赔偿记录
-	public void updateCreatRecord(String ids,Integer md, Double drate,Integer inDate){
+	public void updateCreatRecord(String ids,Integer md, Double drate,Integer inDate,Date outSdDate,Integer outInDate,Double outDelayRate){
 		String[] idss = ids.split(",");
 		Waybill wayb = null;
 		Track track = null;
@@ -300,19 +300,32 @@ public class TrackService {
 			track.setModel(md);
 			track.setDelayRate(drate);
 			track.setInDate(inDate);
-		
+			track.setOutSdDate(outSdDate);
+			track.setOutInDate(outInDate);
+			track.setOutDelayRate(outDelayRate);
+			System.out.print("外发货日期："+outSdDate);//测试输出
+			Long between = ((Long)track.getArriveDate().getTime()-outSdDate.getTime())/1000;
+			Long yq = between/(24*3600);
+			Integer outDelayDays = yq.intValue()-outInDate;
+			
+			track.setOutDelayDate(outDelayDays);
+			
+			
+			
 			//平均得出到货重量
 			Double dWeight = wayb.getWeight()*(track.getPics().doubleValue()/wayb.getPics().doubleValue());
-			System.out.print("总包："+wayb.getPics()+"到货包数："+track.getPics());
+			System.out.println("重量："+dWeight+"外系数："+outDelayRate);
+			System.out.println("晚到："+outDelayDays);//测试输出
+			System.out.println("外结："+dWeight*outDelayDays*outDelayRate);//测试输出
 			
-			System.out.print("平均重量："+dWeight);//测试输出
 			
 			//区分算法分别计算赔偿金额
 			Double indemnity =0.0;
 			int delayDate =0;
 			java.text.DecimalFormat   df1   =new   java.text.DecimalFormat("#.0"); 
 			java.text.DecimalFormat   df   =new   java.text.DecimalFormat("#.00");  
-			
+			Double outIndem =dWeight*outDelayDays*outDelayRate;
+			track.setOutIndemnity(Double.parseDouble(df1.format(outIndem)));
 			if(md==1){
 				indemnity = dWeight*(wayb.getPrice()-drate);
 				delayDate = track.getDays()-inDate;
@@ -609,13 +622,13 @@ public class TrackService {
 				cell.setCellStyle(cellStyle);
 				
 				cell = (HSSFCell) row.createCell(18);
-				cell.setCellValue("");
-				cell.setCellStyle(cellStyle);
+				cell.setCellValue(tk.getOutSdDate());
+				cell.setCellStyle(dateCellStyle);
 				cell = (HSSFCell) row.createCell(19);
-				cell.setCellValue("");
+				cell.setCellValue(tk.getOutDelayDate());
 				cell.setCellStyle(cellStyle);
 				cell = (HSSFCell) row.createCell(20);
-				cell.setCellValue("");
+				cell.setCellValue(tk.getOutIndemnity());
 				cell.setCellStyle(cellStyle);
 				cell = (HSSFCell) row.createCell(21);
 				cell.setCellValue("");

@@ -174,7 +174,7 @@
 		editable:true,
 		valueField:'lineId',
 		textField:'lineId',
-		panelHeight:200,
+		panelHeight:300,
 		panelWidth:120,
 		width:120,
 		onSelect: function(rec){    
@@ -188,7 +188,7 @@
 	$("#bitch").combobox({
 			valueField:'bitch',
 			textField:'bitch',
-			panelHeight:200,
+			panelHeight:300,
 			panelWidth:120,
 			width:120
 		}); 

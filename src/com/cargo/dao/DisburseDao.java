@@ -159,7 +159,7 @@ public class DisburseDao extends BaseDao {
 			       OutFee of = new OutFee();
 			       Double osum = Double.parseDouble(dfw.format(outsum));
 			       Double oInd =indemnifyDao.countOutFeeByBitch(bch);
-			       Double oDelay =trackDao.countOutDelayIndemByBitch(bch);
+			       Double oDelay =trackDao.countOutDelayIndemByBitch(bch).doubleValue();
 			       Double ofee = osum-oInd-oDelay;
 			       Double actOf =countDisburseByBitch(bch);
 			       of.setBitch(bch);

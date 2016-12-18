@@ -182,7 +182,7 @@
 			editable:true,
 			valueField:'lineId',
 			textField:'lineId',
-			panelHeight:'auto',
+			panelHeight:300,
 			panelWidth:100,
 			width:100
 		}); 

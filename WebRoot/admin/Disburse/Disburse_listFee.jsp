@@ -51,8 +51,8 @@
 					handler: function(){
 						$("#win").window({
 							title:'新建记录',
-							width:'100%',
-							height:'100%',
+							width:'80%',
+							height:'80%',
 							content:'<iframe src="Disburse_saveInput.jsp" frameborder="0" width="100%" height="100%"> </iframe>'
 						});
 					

@@ -4,11 +4,7 @@
   <head>
    <%@include file="../head.jspf" %>
      <link rel="stylesheet" href="<%=basePath%>css/Indemnify/Indemnify-saveInput.css" type="text/css" />
-    <title>My JSP 'Rebategoods_saveInput.jsp' starting page</title>
-    
-	<!--
-	<link rel="stylesheet" type="text/css" href="styles.css">
-	-->
+   
 <script type="text/javascript">
 $(function(){
 		

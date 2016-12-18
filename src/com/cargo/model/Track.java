@@ -49,6 +49,14 @@ public class Track {
 	
 	private Integer approval; //审核状态  0：未审核 ，1：已经审核。
 	private Date appDate; //审核日期
+	/*
+	 * _____________________________________
+	 * 以下是外配的晚到结算。
+	 */
+	private Date outSdDate;  //外配日期
+	private Integer outInDate;		//承诺天数
+	private Integer outDelayDate;  //晚到天数
+	private Double outDelayRate;   //外晚到赔偿单价
 	private Double outIndemnity;//外赔偿，即：清关公司给的赔偿
 	private String remarks;	
 
@@ -277,6 +285,38 @@ public class Track {
 
 	public void setDestName(String destName) {
 		this.destName = destName;
+	}
+
+	public Date getOutSdDate() {
+		return outSdDate;
+	}
+
+	public void setOutSdDate(Date outSdDate) {
+		this.outSdDate = outSdDate;
+	}
+
+	public Double getOutDelayRate() {
+		return outDelayRate;
+	}
+
+	public void setOutDelayRate(Double outDelayRate) {
+		this.outDelayRate = outDelayRate;
+	}
+
+	public Integer getOutInDate() {
+		return outInDate;
+	}
+
+	public void setOutInDate(Integer outInDate) {
+		this.outInDate = outInDate;
+	}
+
+	public Integer getOutDelayDate() {
+		return outDelayDate;
+	}
+
+	public void setOutDelayDate(Integer outDelayDate) {
+		this.outDelayDate = outDelayDate;
 	}
 	
 
