@@ -300,9 +300,10 @@ public class WaybillService {
 	public List queryByDest(Integer destId){
 		return this.waybillDao.queryByDest(destId);
 	}
-	public Map find(String lineId,String custId,String waybill,String raterName,String sdName,String bitch,String procurator,Date stDate,Date edDate){
+	public Map find(String lineId,String custId,String waybill,String raterName,String sdName,String bitch,String procurator,
+			String mark,Date stDate,Date edDate){
 		
-		return this.waybillDao.find(lineId,custId, waybill, raterName, sdName, bitch, procurator, stDate, edDate);
+		return this.waybillDao.find(lineId,custId, waybill, raterName, sdName, bitch, procurator,mark, stDate, edDate);
 	}
 	public Map findTrack(String lineId,String custId,String waybill,String raterName,String sdName,String bitch,String procurator,Integer status,Date stDate,Date edDate){
 		

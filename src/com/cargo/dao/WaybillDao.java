@@ -993,7 +993,7 @@ public class WaybillDao extends BaseDao {
 		
 	}
 	//所有运单查询，用在运单浏览Waybill_list.jsp
-	public Map find(String lineId,String custId,String waybill,String raterName,String sdName,String bitch,String procurator,Date stDate,Date edDate){
+	public Map find(String lineId,String custId,String waybill,String raterName,String sdName,String bitch,String procurator,String mark ,Date stDate,Date edDate){
 		
 		Map<String,Object> pageMap = new HashMap<String,Object>();		
 		Criteria crit = getSession().createCriteria(Waybill.class);	
@@ -1014,6 +1014,9 @@ public class WaybillDao extends BaseDao {
 		}
 		if(lineId !=null){
 			crit.add(Restrictions.like("lineId", "%"+lineId+"%"));
+		}
+		if(mark !=null){
+			crit.add(Restrictions.like("mark", "%"+mark+"%"));
 		}
 		if(procurator!=null){
 			crit.add(Restrictions.like("procurator", "%"+procurator+"%"));

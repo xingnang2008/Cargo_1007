@@ -138,7 +138,7 @@ public class WaybillAction extends BaseAction<Waybill> {
 		return "jsonMap";
 	}
 	public String find(){
-		pageMap=this.waybillService.find(model.getLineId(),model.getCustId(), model.getWaybill(), model.getRaterName(), model.getSender(), model.getBitch(),model.getProcurator(), stdate, enddate);
+		pageMap=this.waybillService.find(model.getLineId(),model.getCustId(), model.getWaybill(), model.getRaterName(), model.getSender(), model.getBitch(),model.getProcurator(),model.getMark(), stdate, enddate);
 		return "jsonMap";
 	}
 	public String findUnArrivalTrack(){

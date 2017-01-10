@@ -18,6 +18,7 @@
 				sender: $('#sender').val(),
 				raterName: $('#rater').val(),
 				procurator: $('#procurator').val(),
+				mark:$('#mark').combobox('getValue'),
 				stdate: $('#stdate').datebox('getValue'), 
 				enddate: $('#enddate').datebox('getValue')	
 			});
@@ -31,7 +32,7 @@
 			$('#sender').textbox("clear"),
 			$('#rater').textbox("clear"),
 			$('#procurator').textbox("clear"),				
-			$('#statusId').combobox('setValue',""),
+			$('#mark').combobox('setValue',""),
 			$('#stdate').datebox('setValue',""), 
 			$('#enddate').datebox('setValue',"")	
 		
@@ -47,6 +48,7 @@
 					sender:'sender',
 					raterName: 'rater',
 					procurator:'procurator',
+					mark:'mark',
 					stdate: 'stdate', 
 					enddate: 'enddate'					
 				},
@@ -463,6 +465,17 @@
 			}] 
 
 		});
+		$("#mark").combobox({
+
+			url:'<%=basePath%>admin/Mark/Mark-listAll.action',
+			editable:true,
+			valueField:'type',
+			textField:'remarks',
+			panelHeight:200,
+			panelWidth:120,
+			width:120
+
+		});
 		
 	}); 
 		 function totalTarget(){
@@ -537,7 +550,8 @@
 				<div class="hang"><input type="text" id="stdate" class="easyui-datebox" name="stdate" style="width:120px"/></div>
 				<div class="label">截止日期</div>
 				<div class="hang"><input type="text" id="enddate" class="easyui-datebox" name="enddate" style="width:120px" /></div>
-			
+				<div class="label">品类</div>
+				<div class="hang"><input type="text" id="mark"  name="mark" style="width:120px" /></div>
 				<a id="btnSearch" href="#" class="easyui-linkbutton" data-options="iconCls:'icon-search'">查询</a>
 				<a id="btnReset" href="#" class="easyui-linkbutton" data-options="iconCls:'icon-clear'">清空</a>
 			</div>
