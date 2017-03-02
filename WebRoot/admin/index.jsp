@@ -125,7 +125,7 @@
 					<li><a href="#" title="Waybill/Waybill_track.jsp">货物跟踪</a></li>
 					<li><a href="#" title="Indemnify/Indemnify_list.jsp">赔偿管理</a></li>
 					<li><a href="#" title="Track/Track_applist.jsp">晚到赔偿</a></li>
-					
+					<li><a href="#" title="Track/Track_applistOut.jsp">外-晚到赔偿</a></li>
 				</ul>
 				</div>
 				<div title="外结费用">

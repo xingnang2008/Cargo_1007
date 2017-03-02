@@ -92,16 +92,19 @@
 					},{	
 						text:"计算方式：<input type='text' id='calby' />"   
 					},{	
+						text:"发货日期：<input type='text' id='outSdDate' />"
+					},{	
 						text:"赔偿系数：<input type='text' class='easyui-textbox' id='delayRate'/>"
 					},{	
 						text:"承诺运期：<input type='text' class='easyui-textbox' id='inDate' />"
 					},{
 						iconCls: 'icon-redo',
-						text:'生成晚到赔偿',
+						text:'生成-外晚到赔偿',
 						handler: function(){
 						var rows =$("#dg").datagrid("getSelections");
 						var dRate = $("#delayRate").val();
 						var md = $('#model').combobox('getValue');
+						var sddate = $('#outSdDate').combobox('getValue');
 						var indate =$("#inDate").val();
 						var calby =$("#calby").combobox('getValue');
 						if(calby ==""){
@@ -139,7 +142,7 @@
 									ids = ids.substring(0,ids.lastIndexOf(","));
 									
 									//发送ajax请求
-									$.post("<%=basePath%>admin/Track/Track-createTrRecord.action",{ids:ids,md:md,calby:calby,drate:dRate,indate:indate},function(result){
+									$.post("<%=basePath%>admin/Track/Track-createTrRecordOut.action",{ids:ids,md:md,calby:calby,outsddate:sddate,outindate:indate,outdelayrate:dRate},function(result){
 										if(result =="true"){
 
 											//取消选中所有行
@@ -234,7 +237,7 @@
 								//拼接id的值
 								ids = ids.substring(0,ids.lastIndexOf(","));
 								//1.弹出导出数据页面downloadReport
-								var surl='<iframe src="Track_download.jsp?ids='+ids+'" frameborder="0" width="100%" height="100%"/>';
+								var surl='<iframe src="Track_downloadOut.jsp?ids='+ids+'" frameborder="0" width="100%" height="100%"/>';
 								console.info(surl);
 								//1.弹出导出数据页面
 								$("#win").window({
@@ -264,9 +267,9 @@
 									   		break;
 									   		case 1: return "按体积";
 									   		break;						        		
-									   	}
-									 },width:60},
-							 		{field:'delayRate',title:'赔偿系数',align:'center',width:60},
+							   	}
+							 },width:60},
+							 {field:'delayRate',title:'赔偿系数',align:'center',width:60},
 								   {field:'delayWeight',title:'晚到重量',align:'center',width:60},
 								   {field:'delayVol',title:'晚到体积',align:'center',width:60},
 								   {field:'inDate',title:'承诺运期',align:'center',width:60},
@@ -280,7 +283,6 @@
 								   		break;						        		
 								   	}
 								   },width:60},	
-								   
 								{field:'lineId',title:'线路',align:'center',width:100},
 								{field:'bitch',title:'批次',align:'center',width:150},
 								{field:'sender',title:'发货人',align:'center',width:60},
@@ -317,8 +319,35 @@
 										 return "-";
 									 }
 									}  ,width:100},	
-
-							         
+								{field:'outSdDate',title:'起飞日期',align:'center',
+										 formatter:function(value,row,index){
+										 if(value != null){
+											var unixTimestamp = new Date(value);  
+									   	return unixTimestamp.toLocaleDateString();
+										 }else{
+											 return "-";
+										 }
+										}  ,width:100},	
+								{field:'outModel',title:'赔偿方式',align:'center',formatter:function(value,row,index){ 
+										   	switch(value){
+										   		case 0: return "按天计算";
+										   		break;
+										   		case 1: return "重新定价";
+										   		break;						        		
+								   	}
+								 },width:60},
+								 {field:'outCalBy',title:'计算方式',align:'center',formatter:function(value,row,index){ 
+									   	switch(value){
+									   		case 0: return "按重量";
+									   		break;
+									   		case 1: return "按体积";
+									   		break;						        		
+							   	}
+							 },width:60},
+							 {field:'outDelayRate',title:'赔偿系数',align:'center',width:60},
+								 {field:'outInDate',title:'外承诺运期',align:'center',width:60},
+								 {field:'outDelayDate',title:'晚到天数',align:'center',width:60},	
+								 {field:'outIndemnity',title:'晚到赔偿',align:'center',width:60},     
 					        {field:'remarks',title:'备注',align:'center',width:200}
 				]]    
 			});

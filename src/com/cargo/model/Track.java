@@ -34,9 +34,9 @@ public class Track {
 	private Integer wstatus;// 货物‘完好’状态 分：0完好， 1有破损或丢失
 		
 	private Integer model;  // 赔偿计算方式：0 按天计算，1 重新定价
-	
-	private Double delayWeight;
-		
+	private Integer calBy;  //晚到计算：0按重量，1按体积
+	private Double delayWeight;  //晚到重量
+	private Double delayVol;	//晚到体积
 	private Integer inDate;		//承诺天数
 	
 	private Integer delayDate;  //晚到天数
@@ -53,6 +53,8 @@ public class Track {
 	 * _____________________________________
 	 * 以下是外配的晚到结算。
 	 */
+	private Integer outModel;  // 赔偿计算方式：0 按天计算，1 重新定价
+	private Integer outCalBy;  //晚到计算：0按重量，1按体积
 	private Date outSdDate;  //外配日期
 	private Integer outInDate;		//承诺天数
 	private Integer outDelayDate;  //晚到天数
@@ -185,6 +187,14 @@ public class Track {
 		this.model = model;
 	}
 
+	public Integer getCalBy() {
+		return calBy;
+	}
+
+	public void setCalBy(Integer calBy) {
+		this.calBy = calBy;
+	}
+
 	public Double getDelayWeight() {
 		return delayWeight;
 	}
@@ -194,6 +204,14 @@ public class Track {
 	}
 
 	
+
+	public Double getDelayVol() {
+		return delayVol;
+	}
+
+	public void setDelayVol(Double delayVol) {
+		this.delayVol = delayVol;
+	}
 
 	public Integer getInDate() {
 		return inDate;
@@ -317,6 +335,22 @@ public class Track {
 
 	public void setOutDelayDate(Integer outDelayDate) {
 		this.outDelayDate = outDelayDate;
+	}
+
+	public Integer getOutModel() {
+		return outModel;
+	}
+
+	public void setOutModel(Integer outModel) {
+		this.outModel = outModel;
+	}
+
+	public Integer getOutCalBy() {
+		return outCalBy;
+	}
+
+	public void setOutCalBy(Integer outCalBy) {
+		this.outCalBy = outCalBy;
 	}
 	
 
