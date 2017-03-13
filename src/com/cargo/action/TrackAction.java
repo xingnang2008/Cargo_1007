@@ -14,7 +14,6 @@ public class TrackAction extends BaseAction<Track> {
 	private Date tdate;
 	private Integer editId;
 	private Integer md;
-	private Integer calby;
 	private Double drate;
 	private Date outsddate;
 	private Integer outindate;
@@ -52,15 +51,11 @@ public class TrackAction extends BaseAction<Track> {
 		return "stream";
 	}
 	public String createTrRecord(){
-		trackService.updateCreatRecord(ids,md,calby,drate,indate);
+		trackService.updateCreatRecord(ids,md,drate,indate,outsddate,outindate,outdelayrate);
 		inputStream = new ByteArrayInputStream("true".getBytes());		
 		return "stream";
 	}
-	public String createTrRecordOut(){
-		trackService.updateCreatOutRecord(ids,md,calby,outsddate,outindate,outdelayrate);
-		inputStream = new ByteArrayInputStream("true".getBytes());		
-		return "stream";
-	}
+
 	public String inputFromExcel(){
 		try {
 			String returnMarks= this.trackService.checkExcel(excelFile, excelFileFileName);
@@ -87,10 +82,7 @@ public class TrackAction extends BaseAction<Track> {
 		downStream = trackService.getInputStream(ids);
 		return "downStream";
 	}
-	public String downloadOut(){
-		downStream = trackService.getInputStreamOut(ids);
-		return "downStream";
-	}
+	
 	
 	public InputStream getDownStream() {
 		return downStream;
@@ -115,13 +107,6 @@ public class TrackAction extends BaseAction<Track> {
 	}
 	public void setMd(Integer md) {
 		this.md = md;
-	}
-	
-	public Integer getCalby() {
-		return calby;
-	}
-	public void setCalby(Integer calby) {
-		this.calby = calby;
 	}
 	public Double getDrate() {
 		return drate;

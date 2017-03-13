@@ -89,12 +89,17 @@
 				}}}
 					,{	
 						text:"赔偿方式：<input type='text' id='model' />"   
-					},{	
-						text:"计算方式：<input type='text' id='calby' />"   
+					   
 					},{	
 						text:"赔偿系数：<input type='text' class='easyui-textbox' id='delayRate'/>"
 					},{	
 						text:"承诺运期：<input type='text' class='easyui-textbox' id='inDate' />"
+					},{	
+						text:"外配日期：<input type='text' class='easyui-datebox' id='outSdDate'/>"
+					},{	
+						text:"外承诺运期：<input type='text' class='easyui-textbox' id='outInDate'/>"
+					},{	
+						text:"外赔系数：<input type='text' class='easyui-textbox' id='outDelayRate'/>"
 					},{
 						iconCls: 'icon-redo',
 						text:'生成晚到赔偿',
@@ -103,15 +108,9 @@
 						var dRate = $("#delayRate").val();
 						var md = $('#model').combobox('getValue');
 						var indate =$("#inDate").val();
-						var calby =$("#calby").combobox('getValue');
-						if(calby ==""){
-							$.messager.show({
-								title:'选择输入计算方式',
-								msg:'计算晚到赔偿，必须要选择计算方式',
-								timeout:2000,
-								showType:'slide'
-							});
-						}else{
+						var outsd =$("#outSdDate").combobox('getValue');
+						var outind =$("#outInDate").val();
+						var outdr =$("#outDelayRate").val();
 						
 						if(md ==""){
 							$.messager.show({
@@ -139,7 +138,7 @@
 									ids = ids.substring(0,ids.lastIndexOf(","));
 									
 									//发送ajax请求
-									$.post("<%=basePath%>admin/Track/Track-createTrRecord.action",{ids:ids,md:md,calby:calby,drate:dRate,indate:indate},function(result){
+									$.post("<%=basePath%>admin/Track/Track-createTrRecord.action",{ids:ids,md:md,drate:dRate,indate:indate,outsddate:outsd,outindate:outind,outdelayrate:outdr},function(result){
 										if(result =="true"){
 
 											//取消选中所有行
@@ -156,10 +155,13 @@
 										}						
 									
 									},"text");
+								
+								
+
 						}
+
 						}
-		 				}
-			 		}
+		 			}
 					},{
 						iconCls: 'icon-redo',
 						text:'审核赔偿',
@@ -258,17 +260,7 @@
 								   		break;						        		
 								   	}
 								   },width:60},
-								   {field:'calBy',title:'计算方式',align:'center',formatter:function(value,row,index){ 
-									   	switch(value){
-									   		case 0: return "按重量";
-									   		break;
-									   		case 1: return "按体积";
-									   		break;						        		
-									   	}
-									 },width:60},
-							 		{field:'delayRate',title:'赔偿系数',align:'center',width:60},
 								   {field:'delayWeight',title:'晚到重量',align:'center',width:60},
-								   {field:'delayVol',title:'晚到体积',align:'center',width:60},
 								   {field:'inDate',title:'承诺运期',align:'center',width:60},
 								   {field:'delayDate',title:'晚到天数',align:'center',width:60},	
 								   {field:'delayIndemnity',title:'晚到赔偿',align:'center',width:60},	
@@ -280,7 +272,6 @@
 								   		break;						        		
 								   	}
 								   },width:60},	
-								   
 								{field:'lineId',title:'线路',align:'center',width:100},
 								{field:'bitch',title:'批次',align:'center',width:150},
 								{field:'sender',title:'发货人',align:'center',width:60},
@@ -375,22 +366,6 @@
 			}] 
 
 		});
-		$("#calby").combobox({
-			valueField: 'value',
-			textField: 'label',
-			panelHeight:'auto',
-			panelWidth:100,
-			width:100,
-			data: [{
-				label: '按重量',
-				value: '0'
-			},{
-				label: '按体积',
-				value: '1'
-			}] 
-
-		});
-		
 		$("#editable").combobox({
 
 			valueField: 'value',

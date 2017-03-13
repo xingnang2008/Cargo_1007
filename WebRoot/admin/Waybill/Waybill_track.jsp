@@ -424,28 +424,7 @@
 				{field:'waybill',title:'运单号' ,align:'center',width:150}
 				
 			]],
-			toolbar: [{
-				iconCls: 'icon-edit',
-				text:'编辑',
-				handler: function(){
-				var rows =$("#dgTrack").datagrid("getSelections");
-				if(rows.length !=1){
-					$.messager.show({
-						title:'错误提示',
-						msg:'一次只能更新一条记录',
-						timeout:2000,
-						showType:'slide'
-					});
-				}else{
-					//1.完成弹出更新页面
-					$("#win").window({
-						title:'更新记录',
-						width:'100%',
-						height:'100%',
-						content:'<iframe title="" src="<%=basePath%>admin/Track/Track_updateInputMin.jsp" frameborder="0" width="100%" height="100%"/>'
-					});
-			}}}
-				,
+			toolbar: [
 				{
 					iconCls: 'icon-remove',
 					text:'删除',
@@ -486,7 +465,7 @@
 										$("#dgTrack").datagrid("uncheckAll");
 										//重新刷新页面
 										$("#dgTrack").datagrid("reload");
-										$("#dg").datagrid("reload");
+										
 									}else{
 										$.messager.show({
 											title:'删除错误',
@@ -517,15 +496,6 @@
 								 return "-";
 							 }
 							}  ,width:100},	
-							{field:'sddate',title:'发货日期',align:'center',
-								 formatter:function(value,row,index){
-								 if(value != null){
-									var unixTimestamp = new Date(value);  
-		                        	return unixTimestamp.toLocaleDateString();
-								 }else{
-									 return "-";
-								 }
-								}  ,width:100},	
 							{field:'pics',title:'到货件数',align:'center',width:60},
 							{field:'wstatus',title:'完整状态',
 								formatter:function(value,row,index){ 
@@ -537,12 +507,11 @@
 						   		}
 						   },align:'center',width:80},
 						   {field:'days',title:'运期',align:'center',width:60},
-						   {field:'lineId',title:'线路',align:'center',width:100},
-							{field:'bitch',title:'批次',align:'center',width:150},
-							{field:'sender',title:'发货人',align:'center',width:60},
 							{field:'custId',title:'客户号',align:'center',width:60},
 							{field:'custName',title:'收货人',align:'center',width:120},
-							{field:'rater',title:'经办人',align:'center',width:60},
+							
+							
+							
 							
 						   {field:'model',title:'赔偿方式',align:'center',formatter:function(value,row,index){ 
 						   	switch(value){
@@ -552,18 +521,7 @@
 						   		break;						        		
 						   	}
 						   },width:60},
-						   {field:'calBy',title:'计算方式',align:'center',formatter:function(value,row,index){ 
-							   	switch(value){
-							   		case 0: return "按重量";
-							   		break;
-							   		case 1: return "按体积";
-							   		break;						        		
-							   	}
-							 },width:60},
-						   {field:'delayRate',title:'赔偿系数',align:'center',width:60},
 						   {field:'delayWeight',title:'晚到重量',align:'center',width:60},
-						   {field:'delayVol',title:'晚到体积',align:'center',width:60},
-						   
 						   {field:'inDate',title:'承诺运期',align:'center',width:60},
 						   {field:'delayDate',title:'晚到天数',align:'center',width:60},	
 						   {field:'delayIndemnity',title:'晚到赔偿',align:'center',width:60},	
